@@ -1,0 +1,5 @@
+﻿  Source.cpp
+D:\учеба\Laba 2. Zadanie 3\Laba 2. Zadanie 3\Source.cpp(6,9): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\учеба\Laba 2. Zadanie 3\Laba 2. Zadanie 3\Source.cpp(8,9): warning C4244: return: преобразование "int" в "float", возможна потеря данных
+D:\учеба\Laba 2. Zadanie 3\Laba 2. Zadanie 3\Source.cpp(16,9): warning C4244: return: преобразование "int" в "float", возможна потеря данных
+  Laba 2. Zadanie 3.vcxproj -> D:\учеба\Laba 2. Zadanie 3\x64\Debug\Laba 2. Zadanie 3.exe
