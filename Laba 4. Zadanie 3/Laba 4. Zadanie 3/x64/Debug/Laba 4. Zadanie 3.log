@@ -1,5 +1,0 @@
-﻿  Source.cpp
-D:\учеба\Laba 4. Zadanie 3\Laba 4. Zadanie 3\Source.cpp(16,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\учеба\Laba 4. Zadanie 3\Laba 4. Zadanie 3\Source.cpp(49,63): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-D:\учеба\Laba 4. Zadanie 3\Laba 4. Zadanie 3\Source.cpp(49,49): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-  Laba 4. Zadanie 3.vcxproj -> D:\учеба\Laba 4. Zadanie 3\x64\Debug\Laba 4. Zadanie 3.exe
