@@ -3,7 +3,7 @@
 #include<time.h>
 int randArray(int* array, int row, int col) {
 	for (int i = 0; i < row; i++) {
-		for(int j = 0; j < col; j++)
+		for (int j = 0; j < col; j++)
 		{
 			array[i * 100 + j] = rand() % 10;
 		}
