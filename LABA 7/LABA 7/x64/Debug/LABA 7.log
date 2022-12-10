@@ -1,0 +1,6 @@
+﻿  func.c
+D:\учеба\LABA 7\LABA 7\func.c(57,62): warning C4047: =: "char" отличается по уровням косвенного обращения от "char *"
+D:\учеба\LABA 7\LABA 7\func.c(106,3): warning C4013: main: нет определения; предполагается "extern" с возвратом типа "int"
+D:\учеба\LABA 7\LABA 7\func.c(145): warning C4716: task1: должна возвращать значение
+D:\учеба\LABA 7\LABA 7\func.c(163): warning C4716: task2: должна возвращать значение
+  LABA 7.vcxproj -> D:\учеба\LABA 7\x64\Debug\LABA 7.exe
