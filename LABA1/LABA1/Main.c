@@ -4,7 +4,6 @@
 #include"Func.h"
 #include"Struct.h"
 
-
 int main() {
 	Laptop* array = NULL;
 	int size = 0;
