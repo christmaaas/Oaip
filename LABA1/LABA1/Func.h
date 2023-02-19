@@ -12,7 +12,13 @@ void sort(Laptop** array, int* size);
 
 void input_str(char** string);
 
-int choice_(int choice);
+int choice_menu(int choice);
+
+int choice_for_sort(int choice);
+
+int choice_for_sort_menu(int choice);
+
+int symbol_check(char* str);
 
 int input_k_num(int num, int* size);
 
@@ -26,10 +32,18 @@ Laptop* mem_for_struct_array(int size);
 
 void delete(Laptop** array, int* size);
 
-void output(Laptop* array, int* size);
+void output(Laptop** array, int* size);
+
+void sort_one_field(Laptop** array, int* size);
+
+void sort_two_fields(Laptop** array, int* size);
+
+void sort(Laptop** array, int* size);
 
 void menu_info();
 
-void init(Laptop** array, int* size);
+void init_new_array(Laptop** array, int* size);
+
+void init_laptop(Laptop** array, int* size);
 
 void menu(Laptop** array, int* size);
