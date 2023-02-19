@@ -1,0 +1,5 @@
+﻿  Func.c
+D:\учеба\LABA1\LABA1\Func.c(26,62): warning C4047: =: "char" отличается по уровням косвенного обращения от "char *"
+D:\учеба\LABA1\LABA1\Func.c(86,22): warning C4028: формальный параметр 1 отличается от объявления
+D:\учеба\LABA1\LABA1\Func.c(7): warning C4715: enum_push: значение возвращается не при всех путях выполнения
+  LABA1.vcxproj -> D:\учеба\LABA1\x64\Debug\LABA1.exe
