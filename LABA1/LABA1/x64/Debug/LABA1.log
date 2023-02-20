@@ -1,5 +1,5 @@
 ﻿  Func.c
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(26,62): warning C4047: =: "char" отличается по уровням косвенного обращения от "char *"
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(94,22): warning C4028: формальный параметр 1 отличается от объявления
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(7): warning C4715: enum_push: значение возвращается не при всех путях выполнения
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(32,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Main.c
+  Создание кода...
   LABA1.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\x64\Debug\LABA1.exe

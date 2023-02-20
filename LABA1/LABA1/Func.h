@@ -6,29 +6,31 @@
 
 ram enum_push(int num);
 
+Laptop* mem_for_struct_array(int size);
+
 void push_laptop_in_array(Laptop lap, Laptop** array, int* size);
 
 void sort(Laptop** array, int* size);
 
-void input_str(char** string);
-
-int choice_menu(int choice);
-
-int choice_for_sort(int choice);
-
-int choice_for_sort_menu(int choice);
-
 int symbol_check(char* str);
 
-int input_k_num(int num, int* size);
+int input_k_num(int* size);
 
-int input_cost(int num);
+char* input_str();
 
-int input_ssd(int num);
+int choice_menu();
 
-int input_ram(int num);
+int choice_for_sort();
 
-Laptop* mem_for_struct_array(int size);
+int choice_for_sort_menu();
+
+int input_cost();
+
+int input_ssd();
+
+int input_ram();
+
+void menu_info();
 
 void delete(Laptop** array, int* size);
 
@@ -39,8 +41,6 @@ void sort_one_field(Laptop** array, int* size);
 void sort_two_fields(Laptop** array, int* size);
 
 void sort(Laptop** array, int* size);
-
-void menu_info();
 
 void init_new_array(Laptop** array, int* size);
 

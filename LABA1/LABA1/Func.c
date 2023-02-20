@@ -1,9 +1,20 @@
 #include"Func.h"
 
-ram enum_push(int num) {
+Laptop* mem_for_struct_array(int size) {
+	Laptop* tmp = (Laptop*)malloc(size * sizeof(Laptop));
+	return tmp;
+}
+
+int enum_push(int num) {
 	if (num == 4) return LOW;
 	if (num == 8) return MEDIUM;
 	if (num == 16) return HIGH;
+	return -1;
+}
+
+int symbol_check(char* str) {
+	int c = str[0];
+	return c;
 }
 
 void push_laptop_in_array(Laptop lap, Laptop** array, int* size) {
@@ -11,26 +22,22 @@ void push_laptop_in_array(Laptop lap, Laptop** array, int* size) {
 	if ((*array) == NULL) {
 		(*array) = (Laptop*)malloc((*size) * sizeof(lap));
 	}
-	else (*array) = (Laptop*)realloc((*array), (*size) * sizeof(lap));
+	else {
+		(*array) = (Laptop*)realloc((*array), (*size) * sizeof(lap));
+	}
 	(*array)[(*size) - 1] = lap;
 }
 
-void input_str(char** string) {
-	int N = 256;
-	(*string) = (char*)malloc(N * sizeof(char));
-	int i = 0;
-	while (((*string)[i] = getchar()) != '\n' && (*string)[i] != EOF) {
-		i++;
-		if (i == N) {
-			N *= 2;
-			(*string)[i] = (char*)realloc((*string), N * sizeof(char));
-		}
-	}
-	(*string) = (char*)realloc((*string), (i + 1) * sizeof(char));
-	(*string)[i] = '\0';
+char* input_str() {
+	char* string = (char*)calloc(256, sizeof(char));
+	gets_s(string, 255);
+	int size = strlen(string);
+	string = (char*)realloc(string, size + 1);
+	return string;
 }
 
-int choice_menu(int choice) {
+int choice_menu() {
+	int choice = 0;
 	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 6 || getchar() != '\n') {
 		printf("\nYou need to pick 1 - 6: ");
 		rewind(stdin);
@@ -38,7 +45,8 @@ int choice_menu(int choice) {
 	return choice;
 }
 
-int choice_for_sort(int choice) {
+int choice_for_sort() {
+	int choice = 0;
 	while (scanf_s("%d", &choice) == 0 || choice < 1 || choice > 5 || getchar() != '\n') {
 		printf("\nYou need to pick 1 - 5: ");
 		rewind(stdin);
@@ -46,7 +54,8 @@ int choice_for_sort(int choice) {
 	return choice;
 }
 
-int choice_for_sort_menu(int choice) {
+int choice_for_sort_menu() {
+	int choice = 0;
 	while (scanf_s("%d", &choice) == 0 || choice < 1 || choice > 2 || getchar() != '\n') {
 		printf("\nYou need to pick 1 - 2: ");
 		rewind(stdin);
@@ -54,41 +63,40 @@ int choice_for_sort_menu(int choice) {
 	return choice;
 }
 
-int input_k_num(int num, int* size) {
-	while (scanf_s("%d", &num) == 0 || num <= 0 || num > (*size) || getchar() != '\n') {
+int input_k_num(int* size) {
+	int k = 0;
+	while (scanf_s("%d", &k) == 0 || k <= 0 || k > (*size) || getchar() != '\n') {
+		printf("\nPick a correct laptop to delete\n");
+		rewind(stdin);
+	}
+	return k;
+}
+
+int input_cost() {
+	int cost = 0;
+	while (scanf_s("%d", &cost) == 0 || getchar() != '\n') {
 		printf("\nPick a correct cost\n");
 		rewind(stdin);
 	}
-	return num;
+	return cost;
 }
 
-int input_cost(int num) {
-	while (scanf_s("%d", &num) == 0 || getchar() != '\n') {
-		printf("\nPick a correct cost\n");
-		rewind(stdin);
-	}
-	return num;
-}
-
-int input_ssd(int num) {
-	while (scanf_s("%d", &num) == 0 || num < 128 || (num > 128 && num < 256) || (num > 256 && num < 512) || (num > 512 && num < 1024) || num > 1024 || getchar() != '\n') {
+int input_ssd() {
+	int ssd = 0;
+	while (scanf_s("%d", &ssd) == 0 || ssd < 128 || (ssd > 128 && ssd < 256) || (ssd > 256 && ssd < 512) || (ssd > 512 && ssd < 1024) || ssd > 1024 || getchar() != '\n') {
 		printf("\nPick a correct SSD capacity\n");
 		rewind(stdin);
 	}
-	return num;
+	return ssd;
 }
 
-int input_ram(int num) {
-	while (scanf_s("%d", &num) == 0 || num < 4 || (num > 4 && num < 8) || (num > 8 && num < 16) || num > 16 || getchar() != '\n') {
+int input_ram() {
+	int ram = 0;
+	while (scanf_s("%d", &ram) == 0 || ram < 4 || (ram > 4 && ram < 8) || (ram > 8 && ram < 16) || ram > 16 || getchar() != '\n') {
 		printf("\nPick a correct RAM capacity\n");
 		rewind(stdin);
 	}
-	return num;
-}
-
-Laptop* mem_for_struct_array(int size) {
-	Laptop* tmp = (Laptop*)malloc(size * sizeof(Laptop));
-	return tmp;
+	return ram;
 }
 
 void output(Laptop** array, int* size) {
@@ -104,21 +112,16 @@ void output(Laptop** array, int* size) {
 	}
 }
 
-int symbol_check(char* str) {
-	int c = str[0];
-	return c;
-}
-
 void sort_one_field(Laptop** array, int* size) {
-	int i, j, choice = 0;
+	int choice = 0;
 	Laptop buf;
 	printf("\nChoice sort by: 1 - Name | 2 - CPU | 3 - Cost | 4 - SSD | 5 - RAM\n");
 	printf("Your choice: ");
-	choice = choice_for_sort(choice);
+	choice = choice_for_sort();
 	switch (choice) {
 	case 1:
-		for (i = 0; i < (*size) - 1; i++) {
-			for (j = 0; j < (*size) - 1; j++) {
+		for (int i = 0; i < (*size) - 1; i++) {
+			for (int j = 0; j < (*size) - 1; j++) {
 				if (symbol_check((*array)[j].name) > symbol_check((*array)[j + 1].name)) {
 					buf = (*array)[j];
 					(*array)[j] = (*array)[j + 1];
@@ -128,8 +131,8 @@ void sort_one_field(Laptop** array, int* size) {
 		}
 		break;
 	case 2:
-		for (i = 0; i < (*size) - 1; i++) {
-			for (j = 0; j < (*size) - 1; j++) {
+		for (int i = 0; i < (*size) - 1; i++) {
+			for (int j = 0; j < (*size) - 1; j++) {
 				if (symbol_check((*array)[j].cpu) > symbol_check((*array)[j + 1].cpu)) {
 					buf = (*array)[j];
 					(*array)[j] = (*array)[j + 1];
@@ -139,8 +142,8 @@ void sort_one_field(Laptop** array, int* size) {
 		}
 		break;
 	case 3:
-		for (i = 0; i < (*size) - 1; i++) {
-			for (j = 0; j < (*size) - 1; j++) {
+		for (int i = 0; i < (*size) - 1; i++) {
+			for (int j = 0; j < (*size) - 1; j++) {
 				if ((*array)[j].cost > (*array)[j + 1].cost) {
 					buf = (*array)[j];
 					(*array)[j] = (*array)[j + 1];
@@ -150,8 +153,8 @@ void sort_one_field(Laptop** array, int* size) {
 		}
 		break;
 	case 4:
-		for (i = 0; i < (*size) - 1; i++) {
-			for (j = 0; j < (*size) - 1; j++) {
+		for (int i = 0; i < (*size) - 1; i++) {
+			for (int j = 0; j < (*size) - 1; j++) {
 				if ((*array)[j].ssd_mem > (*array)[j + 1].ssd_mem) {
 					buf = (*array)[j];
 					(*array)[j] = (*array)[j + 1];
@@ -161,8 +164,8 @@ void sort_one_field(Laptop** array, int* size) {
 		}
 		break;
 	case 5: 
-		for (i = 0; i < (*size) - 1; i++) {
-			for (j = 0; j < (*size) - 1; j++) {
+		for (int i = 0; i < (*size) - 1; i++) {
+			for (int j = 0; j < (*size) - 1; j++) {
 				if ((*array)[j].ram_mem > (*array)[j + 1].ram_mem) {
 					buf = (*array)[j];
 					(*array)[j] = (*array)[j + 1];
@@ -175,10 +178,9 @@ void sort_one_field(Laptop** array, int* size) {
 }
 
 void sort_two_fields(Laptop** array, int* size) {
-	int i, j;
 	Laptop buf;
-	for (i = 0; i < (*size) - 1; i++) {
-		for (j = 0; j < (*size) - 1; j++) {
+	for (int i = 0; i < (*size) - 1; i++) {
+		for (int j = 0; j < (*size) - 1; j++) {
 			if (((*array)[j].cost > (*array)[j + 1].cost) || ((*array)[j].cost == (*array)[j + 1].cost) && ((*array)[j].ram_mem > (*array)[j + 1].ram_mem)) {
 				buf = (*array)[j];
 				(*array)[j] = (*array)[j + 1];
@@ -196,7 +198,7 @@ void sort(Laptop** array, int* size) {
 	printf("2 - Sort by cost and RAM\n");
 	printf("----------------\n");
 	printf("Your choice: ");
-	choice = choice_for_sort(choice);
+	choice = choice_for_sort_menu();
 	switch (choice) {
 	case 1:
 		sort_one_field(array, size);
@@ -206,16 +208,19 @@ void sort(Laptop** array, int* size) {
 		sort_two_fields(array, size);
 		output(array, size);
 		break;
+	default:
+		exit(0);
+		break;
 	}
 }
 
 void delete(Laptop** array, int* size) {
-	int i, k = 0;
+	int k = 0;
 	printf("\nEnter a number of a laptop to delete: ");
-	k = input_k_num(k, size);
+	k = input_k_num(size);
 	free((*array)[k - 1].name);
 	free((*array)[k - 1].cpu);
-	for (i = (k - 1); i < (*size); i++) {
+	for (int i = (k - 1); i < (*size); i++) {
 		(*array)[i] = (*array)[i + 1];
 	}
 	(*size)--;
@@ -228,15 +233,15 @@ void init_laptop(Laptop** array, int* size) {
 	Laptop tmp;
 	printf("\n--------- INIT LAPTOP ---------\n");
 	printf("Enter a name of laptop: ");
-	input_str(&tmp.name);
+	tmp.name = input_str();
 	printf("\nEnter a CPU of %s: ", tmp.name);
-	input_str(&tmp.cpu);
+	tmp.cpu = input_str();
 	printf("\nEnter a cost (in $) of %s: ", tmp.name);
-	tmp.cost = input_cost(tmp.cost);
+	tmp.cost = input_cost();
 	printf("\nEnter a SSD (128GB/256GB/512GB/1024GB) capacity of %s: ", tmp.name);
-	tmp.ssd_mem = input_ssd(tmp.ssd_mem);
+	tmp.ssd_mem = input_ssd();
 	printf("\nEnter a RAM (4GB/8GB/16GB) of %s: ", tmp.name);
-	tmp.ram_mem = enum_push(input_ram(tmp.ram_mem));
+	tmp.ram_mem = enum_push(input_ram());
 	push_laptop_in_array(tmp, array, size);
 	printf("---------------------------------\n");
 	output(array, size);
@@ -268,24 +273,33 @@ void menu_info() {
 void menu(Laptop** array, int* size) {
 	int choice = 0;
 	menu_info();
-	choice = choice_menu(choice);
+	choice = choice_menu();
 	switch (choice) {
 	case 1:
 		output(array, size);
 		menu(array, size);
+		break;
 	case 2:
 		init_laptop(array, size);
 		menu(array, size);
+		break;
 	case 3:
 		delete(array, size);
 		menu(array, size);
+		break;
 	case 4:
 		sort(array, size);
 		menu(array, size);
+		break;
 	case 5:
 		init_new_array(array, size);
 		menu(array, size);
+		break;
 	case 6:
 		exit(2);
+		break;
+	default:
+		exit(0);
+		break;
 	}
 }
