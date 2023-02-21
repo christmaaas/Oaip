@@ -17,6 +17,24 @@ int symbol_check(char* str) {
 	return c;
 }
 
+void str_swap(Laptop** array, const char* str1, const char* str2, int index) {
+	Laptop buf;
+	if (symbol_check(str1) > symbol_check(str2)){
+		buf = (*array)[index];
+		(*array)[index] = (*array)[index + 1];
+		(*array)[index + 1] = buf;
+	}
+}
+
+void digit_swap(Laptop** array, const int num1, const int num2, int index) {
+	Laptop buf;
+	if (num1 > num2) {
+		buf = (*array)[index];
+		(*array)[index] = (*array)[index + 1];
+		(*array)[index + 1] = buf;
+	}
+}
+
 void push_laptop_in_array(Laptop lap, Laptop** array, int* size) {
 	(*size)++;
 	if ((*array) == NULL) {
@@ -114,7 +132,6 @@ void output(Laptop** array, int* size) {
 
 void sort_one_field(Laptop** array, int* size) {
 	int choice = 0;
-	Laptop buf;
 	printf("\nChoice sort by: 1 - Name | 2 - CPU | 3 - Cost | 4 - SSD | 5 - RAM\n");
 	printf("Your choice: ");
 	choice = choice_for_sort();
@@ -122,57 +139,40 @@ void sort_one_field(Laptop** array, int* size) {
 	case 1:
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
-				if (symbol_check((*array)[j].name) > symbol_check((*array)[j + 1].name)) {
-					buf = (*array)[j];
-					(*array)[j] = (*array)[j + 1];
-					(*array)[j + 1] = buf;
-				}
+				str_swap(array, (*array)[j].name, (*array)[j + 1].name, j);
 			}
 		}
 		break;
 	case 2:
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
-				if (symbol_check((*array)[j].cpu) > symbol_check((*array)[j + 1].cpu)) {
-					buf = (*array)[j];
-					(*array)[j] = (*array)[j + 1];
-					(*array)[j + 1] = buf;
-				}
+				str_swap(array, (*array)[j].cpu, (*array)[j + 1].cpu, j);
 			}
 		}
 		break;
 	case 3:
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
-				if ((*array)[j].cost > (*array)[j + 1].cost) {
-					buf = (*array)[j];
-					(*array)[j] = (*array)[j + 1];
-					(*array)[j + 1] = buf;
-				}
+				digit_swap(array, (*array)[j].cost, (*array)[j + 1].cost, j);
 			}
 		}
 		break;
 	case 4:
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
-				if ((*array)[j].ssd_mem > (*array)[j + 1].ssd_mem) {
-					buf = (*array)[j];
-					(*array)[j] = (*array)[j + 1];
-					(*array)[j + 1] = buf;
-				}
+				digit_swap(array, (*array)[j].ssd_mem, (*array)[j + 1].ssd_mem, j);
 			}
 		}
 		break;
 	case 5: 
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
-				if ((*array)[j].ram_mem > (*array)[j + 1].ram_mem) {
-					buf = (*array)[j];
-					(*array)[j] = (*array)[j + 1];
-					(*array)[j + 1] = buf;
-				}
+				digit_swap(array, (*array)[j].ram_mem, (*array)[j + 1].ram_mem, j);
 			}
 		}
+		break;
+	default:
+		exit(0);
 		break;
 	}
 }
@@ -216,7 +216,8 @@ void sort(Laptop** array, int* size) {
 
 void delete(Laptop** array, int* size) {
 	int k = 0;
-	printf("\nEnter a number of a laptop to delete: ");
+	printf("\n--------------- DELETE ---------------\n");
+	printf("Enter a number of a laptop to delete: ");
 	k = input_k_num(size);
 	free((*array)[k - 1].name);
 	free((*array)[k - 1].cpu);
@@ -226,6 +227,7 @@ void delete(Laptop** array, int* size) {
 	(*size)--;
 	(*array) = (Laptop*)realloc((*array), (*size) * sizeof(Laptop));
 	printf("\n--- LAPTOP NUMBER %d WAS DELETED ---\n", k);
+	printf("--------------------------------------\n");
 	output(array, size);
 }
 
@@ -254,7 +256,9 @@ void init_new_array(Laptop** array, int* size) {
 		(*size)--;
 		(*array) = (Laptop*)realloc((*array), (*size) * sizeof(Laptop));
 	}
-	printf("\n--- ARRAY WAS DELETED ---\n");
+	printf("\n-------------------------\n");
+	printf("--- ARRAY WAS DELETED ---\n");
+	printf("-------------------------\n");
 	init_laptop(array, size);
 }
 

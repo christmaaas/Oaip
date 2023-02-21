@@ -47,3 +47,7 @@ void init_new_array(Laptop** array, int* size);
 void init_laptop(Laptop** array, int* size);
 
 void menu(Laptop** array, int* size);
+
+void str_swap(Laptop** array, const char* str1, const char* str2, int index);
+
+void digit_swap(Laptop** array, const int num1, const int num2, int index);
