@@ -12,7 +12,7 @@ int enum_push(int num) {
 	return -1;
 }
 
-int symbol_check(char* str) {
+int symbol_check(const char* str) {
 	int c = str[0];
 	return c;
 }
@@ -81,7 +81,7 @@ int choice_for_sort_menu() {
 	return choice;
 }
 
-int input_k_num(int* size) {
+int input_k_num(const int* size) {
 	int k = 0;
 	while (scanf_s("%d", &k) == 0 || k <= 0 || k > (*size) || getchar() != '\n') {
 		printf("\nPick a correct laptop to delete\n");
@@ -117,7 +117,7 @@ int input_ram() {
 	return ram;
 }
 
-void output(Laptop** array, int* size) {
+void output(Laptop** array, const int* size) {
 	for (int i = 0; i < (*size); i++) {
 		printf("\n------- LAPTOP -------\n");
 		printf("%s\n", (*array)[i].name);
@@ -129,7 +129,7 @@ void output(Laptop** array, int* size) {
 	}
 }
 
-void sort_one_field(Laptop** array, int* size) {
+void sort_one_field(Laptop** array, const int* size) {
 	int choice = 0;
 	printf("\nChoice sort by: 1 - Name | 2 - Cost | 3 - SSD | 4 - RAM\n");
 	printf("Your choice: ");
@@ -168,7 +168,7 @@ void sort_one_field(Laptop** array, int* size) {
 	}
 }
 
-void sort_two_fields(Laptop** array, int* size) {
+void sort_two_fields(Laptop** array, const int* size) {
 	Laptop buf;
 	for (int i = 0; i < (*size) - 1; i++) {
 		for (int j = 0; j < (*size) - 1; j++) {
@@ -287,7 +287,6 @@ void menu(Laptop** array, int* size) {
 		break;
 	case 6:
 		exit(2);
-		break;
 	default:
 		exit(0);
 	}
