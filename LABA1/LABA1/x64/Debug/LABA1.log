@@ -2,5 +2,6 @@
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(22,23): warning C4090: функция: разные квалификаторы "const"
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(22,44): warning C4090: функция: разные квалификаторы "const"
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(52,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(135,9): warning C4101: buf: неиспользованная локальная переменная
+  Main.c
+  Создание кода...
   LABA1.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\x64\Debug\LABA1.exe
