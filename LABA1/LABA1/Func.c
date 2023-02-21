@@ -307,3 +307,4 @@ void menu(Laptop** array, int* size) {
 		break;
 	}
 }
+
