@@ -19,7 +19,7 @@ int symbol_check(const char* str) {
 
 void str_swap(Laptop** array, const char* str1, const char* str2, int index) {
 	Laptop buf;
-	if (symbol_check(str1) > symbol_check(str2)){
+	if (symbol_check(str1) > symbol_check(str2)) {
 		buf = (*array)[index];
 		(*array)[index] = (*array)[index + 1];
 		(*array)[index + 1] = buf;
@@ -35,17 +35,6 @@ void digit_swap(Laptop** array, const int num1, const int num2, int index) {
 	}
 }
 
-void push_laptop_in_array(Laptop lap, Laptop** array, int* size) {
-	(*size)++;
-	if ((*array) == NULL) {
-		(*array) = (Laptop*)malloc((*size) * sizeof(lap));
-	}
-	else {
-		(*array) = (Laptop*)realloc((*array), (*size) * sizeof(lap));
-	}
-	(*array)[(*size) - 1] = lap;
-}
-
 char* input_str() {
 	char* string = (char*)calloc(256, sizeof(char));
 	gets_s(string, 255);
@@ -56,8 +45,8 @@ char* input_str() {
 
 int choice_menu() {
 	int choice = 0;
-	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 6 || getchar() != '\n') {
-		printf("\nYou need to pick 1 - 6: ");
+	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 7 || getchar() != '\n') {
+		printf("\nYou need to pick 1 - 7: ");
 		rewind(stdin);
 	}
 	return choice;
@@ -122,7 +111,7 @@ void output(Laptop** array, const int* size) {
 		printf("\n------- LAPTOP -------\n");
 		printf("%s\n", (*array)[i].name);
 		printf("----- PARAMETERS -----\n");
-		printf("Cost: %d$\n", (*array)[i].cost);
+		printf("Cost: %dp.\n", (*array)[i].cost);
 		printf("RAM: %d GB\n", (*array)[i].ram_mem);
 		printf("SSD: %d GB\n", (*array)[i].ssd_mem);
 		printf("----------------------\n");
@@ -156,7 +145,7 @@ void sort_one_field(Laptop** array, const int* size) {
 			}
 		}
 		break;
-	case 4: 
+	case 4:
 		for (int i = 0; i < (*size) - 1; i++) {
 			for (int j = 0; j < (*size) - 1; j++) {
 				digit_swap(array, (*array)[j].ram_mem, (*array)[j + 1].ram_mem, j);
@@ -255,12 +244,14 @@ void menu_info() {
 	printf("3 - Delete laptop from array\n");
 	printf("4 - Sort array\n");
 	printf("5 - Initialized new array\n");
-	printf("6 - Exit\n");
+	printf("6 - Parse HTML file\n");
+	printf("7 - Exit\n");
 	printf("----------------\n");
 	printf("Your choice: ");
 }
 
 void menu(Laptop** array, int* size) {
+	FILE* file = NULL;
 	int choice = 0;
 	menu_info();
 	choice = choice_menu();
@@ -286,6 +277,10 @@ void menu(Laptop** array, int* size) {
 		menu(array, size);
 		break;
 	case 6:
+		parse(array, file, size);
+		menu(array, size);
+		break;
+	case 7:
 		exit(2);
 	default:
 		exit(0);

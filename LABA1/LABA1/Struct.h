@@ -5,8 +5,8 @@
 
 enum RAM {
 	LOW = 4,
-	MEDIUM = 8, 
-	HIGH = 16 
+	MEDIUM = 8,
+	HIGH = 16
 };
 
 typedef enum RAM ram;
@@ -15,8 +15,7 @@ typedef struct Laptop {
 	char* name;
 	int cost;
 	int ssd_mem;
-	ram ram_mem;
+	int ram_mem;
 } Laptop;
-
 
 
