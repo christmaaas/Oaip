@@ -1,5 +1,0 @@
-﻿  array.c
-E:\Laboratornaya 6\Laba 6. Zadanie 1\Laba 6. Zadanie 1\array.c(73,8): warning C4244: функция: преобразование "time_t" в "unsigned int", возможна потеря данных
-  main.c
-  Создание кода...
-  Laba 6. Zadanie 1.vcxproj -> E:\Laboratornaya 6\Laba 6. Zadanie 1\x64\Debug\Laba 6. Zadanie 1.exe
