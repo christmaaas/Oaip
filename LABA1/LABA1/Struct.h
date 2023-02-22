@@ -15,7 +15,7 @@ typedef struct Laptop {
 	char* name;
 	int cost;
 	int ssd_mem;
-	int ram_mem;
+	ram ram_mem;
 } Laptop;
 
 

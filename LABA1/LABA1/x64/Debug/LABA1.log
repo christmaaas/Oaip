@@ -1,12 +1,11 @@
 ﻿  Func.c
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(15,30): warning C4028: формальный параметр 1 отличается от объявления
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(41,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(73,28): warning C4028: формальный параметр 1 отличается от объявления
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(109,40): warning C4028: формальный параметр 2 отличается от объявления
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(121,48): warning C4028: формальный параметр 2 отличается от объявления
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(160,49): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(52,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(84,28): warning C4028: формальный параметр 1 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(120,40): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(132,48): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\LABA1\Func.c(171,49): warning C4028: формальный параметр 2 отличается от объявления
   Main.c
-  Parse.c
   Создание кода...
   LINK : не найден или не выполнена сборка C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\x64\Debug\LABA1.exe при последней инкрементной компоновке; выполняется полная компоновка
   LABA1.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA1\x64\Debug\LABA1.exe

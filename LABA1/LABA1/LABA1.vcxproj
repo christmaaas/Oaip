@@ -129,11 +129,9 @@
   <ItemGroup>
     <ClCompile Include="Func.c" />
     <ClCompile Include="Main.c" />
-    <ClCompile Include="Parse.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Func.h" />
-    <ClInclude Include="Parse.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
