@@ -1,7 +1,0 @@
-﻿  Func.c
-D:\учеба\Ziper\Zipper\Func.c(37,19): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\учеба\Ziper\Zipper\Func.c(83,19): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-D:\учеба\Ziper\Zipper\Func.c(86,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-  Main.c
-  Создание кода...
-  Zipper.vcxproj -> D:\учеба\Ziper\x64\Debug\Zipper.exe
