@@ -8,7 +8,7 @@
 
 int error_check(errno_t err);
 
-void sort(words** array, const int* size);
+int compare_sort(const void* first_pointer, const void* second_pointer);
 
 void output(words** array, const int* size);
 

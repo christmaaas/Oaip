@@ -9,21 +9,20 @@ int error_check(errno_t err) {
 	}
 	return 1;
 }
-//сделать qsort
-void sort(words** array, const int* size) {
-	words buf;
-	for (int i = 0; i < (*size) - 1; i++) {
-		for (int j = 0; j < (*size) - 1; j++) {
-			if ((*array)[j].size > (*array)[j + 1].size) {
-				buf = (*array)[j];
-				(*array)[j] = (*array)[j + 1];
-				(*array)[j + 1] = buf;
-			}
-		}
+
+int compare_sort(const void* first_pointer, const void* second_pointer) {
+	const words* first_word = (const words*)first_pointer;
+	const words* second_word = (const words*)second_pointer;
+	if ((*first_word).size > (*second_word).size) {
+		return 1;
 	}
+	else if ((*first_word).size < (*second_word).size) {
+		return -1;
+	}
+	return 0;
 }
 
-void output(words** array, const int* size) {
+void output(words** array, int* size) {
 	for (int i = 0; i < (*size); i++) {
 		printf("----------------------\n");
 		printf("Word: %s\n", (*array)[i].word);
@@ -32,7 +31,7 @@ void output(words** array, const int* size) {
 	}
 }
 
-void dictionary_output(dictionary** array, const int* size) {
+void dictionary_output(dictionary** array, int* size) {
 	for (int i = 0; i < (*size); i++) {
 		printf("----------------------\n");
 		printf("Word1: %s\n", (*array)[i].word_for_change);
@@ -63,7 +62,7 @@ void push_dictionary_in_array(dictionary word, dictionary** array, int* size) {
 	(*array)[(*size) - 1] = word;
 }
 
-char* take_word_after_slash(char* str, int index) {
+char* take_word_after_slash(const char* str, int index) {
 	char* word = (char*)calloc(256, 1);
 	int count = 0;
 	while (str[index] != '\n') {
@@ -75,7 +74,7 @@ char* take_word_after_slash(char* str, int index) {
 	return word;
 }
 
-char* take_word_up_slash(char* str) {
+char* take_word_up_slash(const char* str) {
 	char* word = (char*)calloc(256, 1);
 	int count = 0;
 	while (str[count] != '/') {
@@ -86,7 +85,7 @@ char* take_word_up_slash(char* str) {
 	return word;
 }
 
-char* find_word_in_dictionary(char* str, char* ptr_word) {
+char* find_word_in_dictionary(const char* str, const char* ptr_word) {
 	int i = 0, j = 0, k = 0;
 	char* word = NULL;
 	for (i = 0; str[i] != '\0'; i++) {
@@ -106,7 +105,7 @@ char* find_word_in_dictionary(char* str, char* ptr_word) {
 	return word;
 }
 
-int count_word(char* str, char* ptr, int* index) {
+int count_word(const char* str, const char* ptr, int* index) {
 	int i = 0, j = 0, k = 0, counter = 0, start = (*index) + strlen(ptr);
 	for (i = 0; i < (*index); i++) {
 		for (j = i, k = 0; ptr[k] != '\0' && str[j] == ptr[k]; j++, k++)
@@ -133,7 +132,7 @@ int if_letter(char symbol) {
 	return 0;
 }
 
-int find_word(char* string, int* index) {
+int find_word(const char* string, int* index) {
 	while (string[(*index)] != '\0') {
 		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index) - 1] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
 			return (*index);
@@ -143,7 +142,7 @@ int find_word(char* string, int* index) {
 	return -1;
 }
 
-char* take_word(char* str, int start) {
+char* take_word(const char* str, int start) {
 	int index = 0;
 	char* buf = (char*)calloc(256, 1);
 	while (str[start] != ' ' && str[start] != '\0' && str[start] != '\n' && str[start] != ',' && str[start] != ':' && str[start] != ';' && str[start] != '.' && str[start] != '\"' && str[start] != '!' && str[start] != '?' && str[start] != ')') {
@@ -155,7 +154,7 @@ char* take_word(char* str, int start) {
 	return buf;
 }
 
-char* check_stack(stack* head, char* word, int size_of_word) {
+char* check_stack(stack* head, const char* word, int size_of_word) {
 	stack* p = head;
 	while (p) {
 		if (!strcmp(word, p->word)) {
@@ -167,7 +166,7 @@ char* check_stack(stack* head, char* word, int size_of_word) {
 	return NULL;
 }
 
-void check_words(stack** head, words** array, int* size, char* word, int counter) {
+void check_words(stack** head, words** array, int* size, const char* word, int counter) {
 	char* check = NULL;
 	int size_of_word = 0;
 	if (strlen(word) >= 2) {
@@ -234,7 +233,7 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 	char* buf = (char*)calloc(4096, 1);
 	int index = 0, start = 0, counter = 0;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Zip.txt", "r");
+	err = fopen_s(&file, "D:/Zipfiles/Zip.txt", "r");
 	error_check(err);
 
 	fgets(buf, 4096, file);
@@ -254,7 +253,7 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 	free(buf);
 	free(word);
 	transfer_words(head, array, size_of_words);
-	sort(array, size_of_words); //qsort
+	qsort((*array), (*size_of_words), sizeof(words), compare_sort);
 	output(array, size_of_words);
 	words_for_change(array, arr, size_of_words, size_of_dictionary);
 }
@@ -263,7 +262,7 @@ void push_dictionary(dictionary** arr, int* size_of_dictionary) {
 	FILE* file = NULL;
 	errno_t err;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Archive.txt", "w");
+	err = fopen_s(&file, "D:/Zipfiles/Archive.txt", "w");
 	error_check(err);
 
 	for (int i = 0; i < (*size_of_dictionary); i++) {            
@@ -276,14 +275,14 @@ void push_dictionary(dictionary** arr, int* size_of_dictionary) {
 	fclose(file);
 }
 
-char* word_from_dictionary(char* word) {
+char* word_from_dictionary(const char* word) {
 	FILE* file = NULL;
 	errno_t err;
 	char* buf = (char*)calloc(1024, 1);
 	char* new_word = NULL;
 	int count = 0;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Archive.txt", "r");
+	err = fopen_s(&file, "D:/Zipfiles/Archive.txt", "r");
 	error_check(err);
 
 	fgets(buf, 1024, file);
@@ -300,7 +299,7 @@ char* word_from_dictionary(char* word) {
 	return new_word;
 }
 
-void push_word_from_dictionary(char** str, char* word, char* new_word, int* index) {
+void push_word_from_dictionary(char** str, const char* word, const char* new_word, int* index) {
 	if (new_word == NULL) {
 		return;
 	}
@@ -341,11 +340,11 @@ void push_word_from_dictionary(char** str, char* word, char* new_word, int* inde
 	}
 }
 
-void puts_file(char* str) {
+void puts_file(const char* str) {
 	FILE* file = NULL;
 	errno_t err;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Archive.txt", "a");
+	err = fopen_s(&file, "D:/Zipfiles/Archive.txt", "a");
 	error_check(err);
 
 	fputs(str, file);
@@ -361,7 +360,7 @@ void archiever() {
 	char* buf = (char*)calloc(4096, 1);
 	int index = 0, start = 0;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Zip.txt", "r");
+	err = fopen_s(&file, "D:/Zipfiles/Zip.txt", "r");
 	error_check(err);
 
 	fgets(buf, 4096, file);
@@ -378,6 +377,7 @@ void archiever() {
 	}
 
 	fclose(file);
+	printf("\nFile was archived\n");
 	free(buf);
 	free(word);
 	free(new_word);
