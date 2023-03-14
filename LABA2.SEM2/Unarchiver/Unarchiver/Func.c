@@ -1,6 +1,7 @@
 #include"Func.h"
 
 #define FILE_ERROR -3
+#define MEMORY_ERROR -2
 
 int error_check(errno_t err) {
 	if (err != 0) {
@@ -10,7 +11,7 @@ int error_check(errno_t err) {
 	return 1;
 }
 
-void words_output(words** array, const int* size) {
+void words_output(words** array, int* size) {
 	for (int i = 0; i < (*size); i++) {
 		printf("----------------------\n");
 		printf("Word1: %s\n", (*array)[i].word_for_change);
@@ -35,17 +36,24 @@ int if_letter(char symbol) {
 	return 0;
 }
 
-int find_word(char* string, int* index) {
+int find_word(const char* string, int* index) {
 	while (string[(*index)] != '\0') {
-		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index) - 1] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
-			return (*index);
+		if ((*index) == 0) {
+			if (if_letter(string[(*index)]) != 0) {
+				return (*index);
+			}
+		}
+		else if ((*index) > 0) {
+			if (string[(*index) - 1] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
+				return (*index);
+			}
 		}
 		(*index)++;
 	}
 	return -1;
 }
 
-char* take_word(char* str, int start) {
+char* take_word(const char* str, int start) {
 	int index = 0;
 	char* buf = (char*)calloc(256, 1);
 	while (str[start] != ' ' && str[start] != '\0' && str[start] != '\n' && str[start] != ',' && str[start] != ':' && str[start] != ';' && str[start] != '.' && str[start] != '\"' && str[start] != '!' && str[start] != '?' && str[start] != ')') {
@@ -54,10 +62,13 @@ char* take_word(char* str, int start) {
 		index++;
 	}
 	buf = (char*)realloc(buf, strlen(buf) + 1);
+	if (buf == NULL) {
+		exit(MEMORY_ERROR);
+	}
 	return buf;
 }
 
-char* word_from_dictionary(words** array, char* word, int* size) {
+char* word_from_dictionary(words** array, const char* word, const int* size) {
 	char* new_word = NULL;
 	for (int i = 0; i < (*size); i++) {
 		if (!strcmp(word, (*array)[i].word_for_change)) {
@@ -72,11 +83,12 @@ char* word_from_dictionary(words** array, char* word, int* size) {
 	return new_word;
 }
 
-void push_dictionary(words** array, char* str, int* size) {
+void push_dictionary(words** array, const char* str, int* size) {
 	words word;
 	char* word1 = (char*)calloc(256, 1);
 	char* word2 = (char*)calloc(256, 1);
-	int i = 0, j = 0;
+	int i = 0;
+	int j = 0;
 	while (str[i] != '/') {
 		word1[i] = str[i];
 		i++;
@@ -94,11 +106,14 @@ void push_dictionary(words** array, char* str, int* size) {
 	push_words_in_array(word, array, size);
 }
 
-void push_word_from_dictionary(char** str, char* word, char* new_word, int* index) {
+void push_word_from_dictionary(char** str, const char* word, const char* new_word, int* index) {
 	if (new_word == NULL) {
 		return;
 	}
-	int diff = strlen(word) - strlen(new_word), count = 0, start = (*index), second_start = 0;
+	int diff = strlen(word) - strlen(new_word); 
+	int count = 0; 
+	int start = (*index); 
+	int second_start = 0;
 	if (diff > 0) {
 		while (count != strlen(new_word)) {
 			(*str)[start] = new_word[count];
@@ -135,11 +150,11 @@ void push_word_from_dictionary(char** str, char* word, char* new_word, int* inde
 	}
 }
 
-void puts_file(char* str) {
+void puts_file(const char* str) {
 	FILE* file = NULL;
 	errno_t err;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Unarchived.txt", "a");
+	err = fopen_s(&file, "D:/Zipfiles/Unarchived.txt", "a");
 	error_check(err);
 
 	fputs(str, file);
@@ -153,9 +168,10 @@ void unarchiver(words** array, int* size) {
 	char* buf = (char*)calloc(4096, 1);
 	char* word = NULL;
 	char* new_word = NULL;
-	int index = 0, start = 0;
+	int index = 0; 
+	int start = 0;
 
-	err = fopen_s(&file, "E:/LABA2.SEM2/Zipfiles/Archive.txt", "r");
+	err = fopen_s(&file, "D:/Zipfiles/Archive.txt", "r");
 	error_check(err);
 
 	fgets(buf, 4096, file);

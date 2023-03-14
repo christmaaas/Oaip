@@ -1,11 +1,17 @@
 ﻿  Func.c
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(116,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(119,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(120,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(126,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(134,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(101,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  Main.c
-  Создание кода...
-  LINK : не найден или не выполнена сборка E:\LABA2.SEM2\Unarchiver\x64\Debug\Unarchiver.exe при последней инкрементной компоновке; выполняется полная компоновка
-  Unarchiver.vcxproj -> E:\LABA2.SEM2\Unarchiver\x64\Debug\Unarchiver.exe
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(14,39): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(39,27): warning C4028: формальный параметр 1 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(56,29): warning C4028: формальный параметр 1 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(71,55): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(71,72): warning C4028: формальный параметр 3 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(86,49): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(109,56): warning C4028: формальный параметр 2 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(109,74): warning C4028: формальный параметр 3 отличается от объявления
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(131,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(134,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(135,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(141,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(149,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(113,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(153,28): warning C4028: формальный параметр 1 отличается от объявления
+  Unarchiver.vcxproj -> C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA2.SEM2\Unarchiver\x64\Debug\Unarchiver.exe
