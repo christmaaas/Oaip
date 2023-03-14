@@ -86,7 +86,9 @@ char* take_word_up_slash(const char* str) {
 }
 
 char* find_word_in_dictionary(const char* str, const char* ptr_word) {
-	int i = 0, j = 0, k = 0;
+	int i = 0;
+	int j = 0;
+	int k = 0;
 	char* word = NULL;
 	for (i = 0; str[i] != '\0'; i++) {
 		for (j = i, k = 0; ptr_word[k] != '\0' && str[j] == ptr_word[k]; j++, k++)
@@ -106,7 +108,11 @@ char* find_word_in_dictionary(const char* str, const char* ptr_word) {
 }
 
 int count_word(const char* str, const char* ptr, int* index) {
-	int i = 0, j = 0, k = 0, counter = 0, start = (*index) + strlen(ptr);
+	int i = 0;
+	int j = 0;
+	int k = 0; 
+	int counter = 0; 
+	int start = (*index) + strlen(ptr);
 	for (i = 0; i < (*index); i++) {
 		for (j = i, k = 0; ptr[k] != '\0' && str[j] == ptr[k]; j++, k++)
 			;
@@ -195,19 +201,17 @@ void check_words(stack** head, words** array, int* size, const char* word, int c
 	}
 }
 
-void words_for_change(words** array, dictionary** arr, int* size_of_words, int* size_of_dictionary) {
+void words_for_change(words** array, dictionary** arr, const int* size_of_words, int* size_of_dictionary) {
 	dictionary word;
 	int start = ((*size_of_words) - 1);               
 	int end = 0;
 	while (strlen((*array)[end].word) <= 4) {
-		if (strlen((*array)[start].word) > strlen((*array)[end].word)) {
-			if ((*array)[start].size > (*array)[end].size) {
-				word.word_for_change = (*array)[start].word;
-				word.word_that_change = (*array)[end].word;
-				push_dictionary_in_array(word, arr, size_of_dictionary);
-				start--;
-				end++;
-			}
+		if (strlen((*array)[start].word) > strlen((*array)[end].word) && (*array)[start].size > (*array)[end].size) {
+			word.word_for_change = (*array)[start].word;
+			word.word_that_change = (*array)[end].word;
+			push_dictionary_in_array(word, arr, size_of_dictionary);
+			start--;
+			end++;
 		}
 		if (strlen((*array)[start].word) <= strlen((*array)[end].word)) {
 			start--;
@@ -218,7 +222,7 @@ void words_for_change(words** array, dictionary** arr, int* size_of_words, int* 
 
 void transfer_words(stack** head, words** array, int* size_of_words) {
 	words buf;
-	while ((*head)) {
+	while (*head) {
 		buf.word = (*head)->word;
 		buf.size = (*head)->size;
 		push_words_in_array(buf, array, size_of_words);
@@ -231,7 +235,9 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 	errno_t err;
 	char* word = NULL;
 	char* buf = (char*)calloc(4096, 1);
-	int index = 0, start = 0, counter = 0;
+	int index = 0;
+	int start = 0; 
+	int counter = 0;
 
 	err = fopen_s(&file, "D:/Zipfiles/Zip.txt", "r");
 	error_check(err);
@@ -258,7 +264,7 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 	words_for_change(array, arr, size_of_words, size_of_dictionary);
 }
 
-void push_dictionary(dictionary** arr, int* size_of_dictionary) {
+void push_dictionary(dictionary** arr, const int* size_of_dictionary) {
 	FILE* file = NULL;
 	errno_t err;
 
@@ -303,7 +309,10 @@ void push_word_from_dictionary(char** str, const char* word, const char* new_wor
 	if (new_word == NULL) {
 		return;
 	}
-	int diff = strlen(word) - strlen(new_word), count = 0, start = (*index), second_start = 0;
+	int diff = strlen(word) - strlen(new_word); 
+	int count = 0;
+	int start = (*index);
+	int second_start = 0;
 	if (diff > 0) {
 		while (count != strlen(new_word)) {
 			(*str)[start] = new_word[count];
@@ -358,7 +367,8 @@ void archiever() {
 	char* word = NULL;
 	char* new_word = NULL;
 	char* buf = (char*)calloc(4096, 1);
-	int index = 0, start = 0;
+	int index = 0; 
+	int start = 0;
 
 	err = fopen_s(&file, "D:/Zipfiles/Zip.txt", "r");
 	error_check(err);

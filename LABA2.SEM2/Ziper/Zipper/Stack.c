@@ -1,9 +1,11 @@
 #include"Stack.h"
 
+#define MEMORY_ERROR -2
+
 void push_node(stack** head, char* word, int size) {
     stack* tmp = malloc(sizeof(stack));
     if (tmp == NULL) {
-        return 0;
+        exit(MEMORY_ERROR);
     }
     (*tmp).next = (*head);
     (*tmp).word = word;
@@ -24,7 +26,7 @@ stack* pop_node(stack** head) {
 }
 
 void free_stack(stack** head) {
-    while ((*head)) {
+    while (*head) {
         (*head) = pop_node(head);
     }
 }
