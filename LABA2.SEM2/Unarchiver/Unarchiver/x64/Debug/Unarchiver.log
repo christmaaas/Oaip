@@ -1,0 +1,11 @@
+﻿  Func.c
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(116,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(119,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(120,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(126,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(134,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Unarchiver\Unarchiver\Func.c(101,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Main.c
+  Создание кода...
+  LINK : не найден или не выполнена сборка E:\LABA2.SEM2\Unarchiver\x64\Debug\Unarchiver.exe при последней инкрементной компоновке; выполняется полная компоновка
+  Unarchiver.vcxproj -> E:\LABA2.SEM2\Unarchiver\x64\Debug\Unarchiver.exe

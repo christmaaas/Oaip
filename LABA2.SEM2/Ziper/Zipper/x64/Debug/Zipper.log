@@ -1,0 +1,19 @@
+﻿  Func.c
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(110,57): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(163,15): warning C4133: return: несовместимые типы - из "stack *" в "char *"
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(175,19): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(181,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(184,19): warning C4133: =: несовместимые типы - из "char *" в "stack *"
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(188,26): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(322,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(325,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(326,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(332,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(340,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+E:\LABA2.SEM2\Ziper\Zipper\Func.c(307,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Main.c
+  Stack.c
+E:\LABA2.SEM2\Ziper\Zipper\Stack.c(6,17): warning C4098: push_node: функция типа "void", возвращающая значение
+  Создание кода...
+  LINK : не найден или не выполнена сборка E:\LABA2.SEM2\Ziper\x64\Debug\Zipper.exe при последней инкрементной компоновке; выполняется полная компоновка
+  Zipper.vcxproj -> E:\LABA2.SEM2\Ziper\x64\Debug\Zipper.exe
