@@ -193,6 +193,7 @@ void unarchiver(words** array, int* size) {
 	}
 	
 	fclose(file);
+	printf("\nFile was archived\n");
 	free(buf);
 	free(word);
 	free(new_word);
