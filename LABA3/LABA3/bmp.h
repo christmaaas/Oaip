@@ -4,6 +4,7 @@
 #include<stdlib.h>
 
 #define FILE_ERROR -3
+#define PIXEL_OFFSET 54
 
 #pragma pack(push, 1)
 
@@ -36,6 +37,23 @@ typedef struct BMPFILE {
 
 #pragma pack(pop)
 
+typedef struct PIXEL {
+	unsigned char red;
+	unsigned char green;
+	unsigned char blue;
+	unsigned char alpha;
+} PIXEL;
+
 BMPFILE* get_bmp_file(char* file_name);
 
 void printf_bmp(BMPFILE* bmp);
+
+void bmp_file_info(BMPFILE** bmp_file, char* file_name);
+
+PIXEL* push_pixels_to_struct(BMPFILE* bmp_file, char* file_name);
+
+void printfbmppixels(BMPFILE* bmp_file, PIXEL* pixel);
+
+void bw_conversion(BMPFILE* bmp_file, PIXEL* pixels, char* file_name);
+
+void negative_conversion(BMPFILE* bmp_file, PIXEL* pixels, char* file_name);
