@@ -1,0 +1,8 @@
+﻿  bmp.c
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(41,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(42,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(58,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(98,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(99,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(113,20): warning C4018: <: несоответствие типов со знаком и без знака
+  LABA3.SEM2.vcxproj -> D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\x64\Debug\LABA3.SEM2.exe
