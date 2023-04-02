@@ -2,41 +2,29 @@
 
 #include"bmp.h"
 
-
-
-void printf_bmp(BMPFILE bmp) {
-	printf("ID: %d"
-		"\nfile_size: %d"
-		"\nunused1: %d"
-		"\nunused2: %d"
-		"\npixel_offset: %d"
-		"\nheader_size: %d"
-		"\nwidth: %d"
-		"\nheight: %d"
-		"\ncolor_planes: %hd"
-		"\nbits_per_pixel: %hd"
-		"\ncmprsn: %d"
-		"\ndata_size: %d"
-		"\npwidth: %d"
-		"\npheight: %d"
-		"\ncolors_count: %d"
-		"\nimp_colors_count: %d",
-		bmp.bmphdr.ID,
+void print_bmp(char* file_name) {
+	BMPFILE bmp;
+	FILE* bmp_file = file_open(file_name);
+	fread(&bmp, sizeof(BMPFILE), 1, bmp_file);
+	printf("\n----- BMP-INFO -----\n");
+	printf("Size of BMP file: %d"
+		"\nPixel offset: %d"
+		"\nSize of BMP-Header: %d"
+		"\nWidth of BMP: %d"
+		"\nHeight of BMP: %d"
+		"\nBits per pixel: %hd"
+		"\nCompression: %d"
+		"\nSize of data: %d\n",
 		bmp.bmphdr.file_size,
-		bmp.bmphdr.unused1,
-		bmp.bmphdr.unused2,
 		bmp.bmphdr.pixel_offset,
 		bmp.bmpinf.header_size,
 		bmp.bmpinf.width,
 		bmp.bmpinf.height,
-		bmp.bmpinf.color_planes,
 		bmp.bmpinf.bits_per_pixel,
 		bmp.bmpinf.cmprsn,
-		bmp.bmpinf.data_size,
-		bmp.bmpinf.pwidth,
-		bmp.bmpinf.pheight,
-		bmp.bmpinf.colors_count,
-		bmp.bmpinf.imp_colors_count);
+		bmp.bmpinf.data_size);
+	printf("--------------------\n");
+	fclose(bmp_file);
 }
 
 void push_bw_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {

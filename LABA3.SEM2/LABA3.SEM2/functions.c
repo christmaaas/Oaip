@@ -11,11 +11,12 @@ char* input_file_name() {
 
 void menu_info(char* file_name) {
 	printf("\n----- MENU -----\n");
-	printf("1 - Convert %s to Black-While\n", file_name);
-	printf("2 - Convert %s to Negative\n", file_name);
-	printf("3 - Gamma-correction %s\n", file_name);
-	printf("4 - Pick another BMP-File\n");
-	printf("5 - Exit\n");
+	printf("1 - Main info about %s\n", file_name);
+	printf("2 - Convert %s to Black-While\n", file_name);
+	printf("3 - Convert %s to Negative\n", file_name);
+	printf("4 - Gamma-correction %s\n", file_name);
+	printf("5 - Pick another BMP-File\n");
+	printf("6 - Exit\n");
 	printf("----------------\n");
 	printf("Your choice: ");
 }
@@ -31,8 +32,8 @@ double gamma_degree_check() {
 
 int choice_menu() {
 	int choice = 0;
-	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 5 || getchar() != '\n') {
-		printf("\nYou need to pick 1 - 5: ");
+	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 6 || getchar() != '\n') {
+		printf("\nYou need to pick 1 - 6: ");
 		rewind(stdin);
 	}
 	return choice;
@@ -47,22 +48,26 @@ void menu(char** file_name) {
 	int choice = choice_menu();
 	switch (choice) {
 	case 1:
-		bw_conversion((*file_name));
+		print_bmp((*file_name));
 		menu(file_name);
 		break;
 	case 2:
-		negative_conversion((*file_name));
+		bw_conversion((*file_name));
 		menu(file_name);
 		break;
 	case 3:
-		gamma_correction((*file_name));
+		negative_conversion((*file_name));
 		menu(file_name);
 		break;
 	case 4:
-		change_bmp_file(file_name);
+		gamma_correction((*file_name));
 		menu(file_name);
 		break;
 	case 5:
+		change_bmp_file(file_name);
+		menu(file_name);
+		break;
+	case 6:
 		exit(NORMAL_EXIT);
 	default:
 		exit(ERROR_EXIT);

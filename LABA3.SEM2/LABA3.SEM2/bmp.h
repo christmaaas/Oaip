@@ -43,7 +43,7 @@ typedef struct PIXEL {
 
 #pragma pack(pop)
 
-void printf_bmp(BMPFILE bmp);
+void print_bmp(char* file_name);
 
 void push_bw_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file);
 
