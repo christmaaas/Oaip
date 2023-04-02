@@ -12,6 +12,8 @@ char* input_file_name();
 
 void menu_info(char* file_name);
 
+double gamma_degree_check();
+
 int choice_menu();
 
 void change_bmp_file(char** file_name);

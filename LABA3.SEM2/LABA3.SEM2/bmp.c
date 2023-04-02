@@ -1,4 +1,8 @@
+#include<math.h>
+
 #include"bmp.h"
+
+
 
 void printf_bmp(BMPFILE bmp) {
 	printf("ID: %d"
@@ -147,7 +151,37 @@ void negative_conversion(char* file_name) {
 	printf("\n%s was converted to negative in \"NEGATIVE.bmp\" file\n", file_name);
 }
 
+void push_gamma_correction(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, double gamma_degree) {
+	PIXEL pixels;
+	fseek(bmp_file, bmp.bmphdr.pixel_offset, SEEK_SET);
+	fseek(new_bmp_file, bmp.bmphdr.pixel_offset, SEEK_SET);
+	for (int i = 0; i < bmp.bmpinf.data_size; i += 3) {
+		fread(&pixels, sizeof(PIXEL), 1, bmp_file);
 
+		pixels.blue = (unsigned char)(pow((double)pixels.blue / 255.0, gamma_degree) * 255.0);
+		pixels.green = (unsigned char)(pow((double)pixels.green / 255.0, gamma_degree) * 255.0);
+		pixels.red = (unsigned char)(pow((double)pixels.red / 255.0, gamma_degree) * 255.0);
+
+		fwrite(&pixels, sizeof(PIXEL), 1, new_bmp_file);
+	}
+}
+
+void gamma_correction(char* file_name) {
+	printf("\nInput a gamma-correction degree: ");
+	double gamma_degree = gamma_degree_check();
+	BMPFILE bmp;
+	FILE* file = file_open(file_name);
+	FILE* new_file = new_file_open("GAMMACOR.bmp");
+	
+	fread(&bmp, sizeof(BMPFILE), 1, file);
+	fwrite(&bmp, sizeof(BMPFILE), 1, new_file);
+
+	push_gamma_correction(bmp, file, new_file, gamma_degree);
+
+	fclose(file);
+	fclose(new_file);
+	printf("\n%s was gamma-corrected in \"GAMMACOR.bmp\" file\n", file_name);
+}
 
 
 

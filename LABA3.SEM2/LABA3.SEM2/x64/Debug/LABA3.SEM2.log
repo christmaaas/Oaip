@@ -1,8 +1,13 @@
 ﻿  bmp.c
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(41,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(42,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(58,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(98,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(99,21): warning C4018: <: несоответствие типов со знаком и без знака
-D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\LABA3.SEM2\bmp.c(113,20): warning C4018: <: несоответствие типов со знаком и без знака
-  LABA3.SEM2.vcxproj -> D:\учеба\LABA OAIP 2 SEM\LABA3.SEM2\x64\Debug\LABA3.SEM2.exe
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(45,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(46,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(62,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(102,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(103,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(117,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(158,20): warning C4018: <: несоответствие типов со знаком и без знака
+  functions.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\functions.c(7,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  main.c
+  Создание кода...
+  LABA3.SEM2.vcxproj -> C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA3.SEM2\x64\Debug\LABA3.SEM2.exe

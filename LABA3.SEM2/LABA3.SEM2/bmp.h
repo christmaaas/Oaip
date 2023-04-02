@@ -4,6 +4,7 @@
 #include<stdlib.h>
 
 #include"error.h"
+#include"functions.h"
 
 #pragma pack(push, 1)
 
@@ -60,3 +61,6 @@ void convert_to_negative(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file);
 
 void negative_conversion(char* file_name);
 
+void push_gamma_correction(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, double gamma_degree);
+
+void gamma_correction(char* file_name);
