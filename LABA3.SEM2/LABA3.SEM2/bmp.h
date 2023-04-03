@@ -6,6 +6,7 @@
 #include"error.h"
 #include"functions.h"
 
+
 #pragma pack(push, 1)
 
 typedef struct BMPHEADER {
@@ -64,3 +65,5 @@ void negative_conversion(char* file_name);
 void push_gamma_correction(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, double gamma_degree);
 
 void gamma_correction(char* file_name);
+
+void median_filtration(char* file_name);

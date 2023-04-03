@@ -155,9 +155,9 @@ void push_gamma_correction(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, doub
 }
 
 void gamma_correction(char* file_name) {
+	BMPFILE bmp;
 	printf("\nInput a gamma-correction degree: ");
 	double gamma_degree = gamma_degree_check();
-	BMPFILE bmp;
 	FILE* file = file_open(file_name);
 	FILE* new_file = new_file_open("GAMMACOR.bmp");
 	
@@ -171,5 +171,82 @@ void gamma_correction(char* file_name) {
 	printf("\n%s was gamma-corrected in \"GAMMACOR.bmp\" file\n", file_name);
 }
 
+int compare(const void* a, const void* b) {
+	return (*(unsigned char*)a - *(unsigned char*)b);
+}
 
+void push_new_filter(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, int size_filter) {
+	PIXEL** pixels = (PIXEL**)malloc(bmp.bmpinf.height * sizeof(PIXEL*));
+	for (int i = 0; i < bmp.bmpinf.height; i++) {
+		pixels[i] = (PIXEL*)malloc(bmp.bmpinf.width * sizeof(PIXEL));
+	}
+	unsigned char* channel_blue = (unsigned char*)malloc(size_filter * size_filter * sizeof(unsigned char));
+	unsigned char* channel_green = (unsigned char*)malloc(size_filter * size_filter * sizeof(unsigned char));
+	unsigned char* channel_red = (unsigned char*)malloc(size_filter * size_filter * sizeof(unsigned char));
+	int size_filter_half = size_filter / 2;
+	fseek(bmp_file, bmp.bmphdr.pixel_offset, SEEK_SET);
+	fseek(new_bmp_file, bmp.bmphdr.pixel_offset, SEEK_SET);
+	
+	for (int i = 0; i < bmp.bmpinf.height; i++) {
+		for (int j = 0; j < bmp.bmpinf.width; j++) {
+			fread(&pixels[i][j].blue, sizeof(unsigned char), 1, bmp_file);
+			fread(&pixels[i][j].green, sizeof(unsigned char), 1, bmp_file);
+			fread(&pixels[i][j].red, sizeof(unsigned char), 1, bmp_file);
+		}
+		fseek(bmp_file, bmp.bmpinf.width % 4, SEEK_CUR);
+	}
+	
+	for (int row = size_filter_half; row < bmp.bmpinf.height - size_filter_half; row++) {
+		for (int col = size_filter_half; col < bmp.bmpinf.width - size_filter_half; col++) {
+			int signature = 0;
+			for (int near_row = 0; near_row < size_filter; near_row++) {
+				for (int near_col = 0; near_col < size_filter; near_col++) {
+					if (signature < size_filter * size_filter) {
+						channel_blue[signature] = pixels[row + near_row - size_filter_half][col + near_col - size_filter_half].blue;
+						channel_green[signature] = pixels[row + near_row - size_filter_half][col + near_col - size_filter_half].green;
+						channel_red[signature] = pixels[row + near_row - size_filter_half][col + near_col - size_filter_half].red;
+						signature++;
+					}
+				}
+			}
+			qsort(channel_blue, size_filter * size_filter, sizeof(unsigned char), compare);
+			qsort(channel_green, size_filter * size_filter, sizeof(unsigned char), compare);
+			qsort(channel_red, size_filter * size_filter, sizeof(unsigned char), compare);
+		
+			pixels[row][col].blue = channel_blue[(size_filter * size_filter) / 2];
+			pixels[row][col].green = channel_green[(size_filter * size_filter) / 2];
+			pixels[row][col].red = channel_red[(size_filter * size_filter) / 2];
+		}
+	}
+	
+	for (int i = 0; i < bmp.bmpinf.height; i++) {
+		for (int j = 0; j < bmp.bmpinf.width; j++) {
+			fwrite(&pixels[i][j].blue, sizeof(unsigned char), 1, new_bmp_file);
+			fwrite(&pixels[i][j].green, sizeof(unsigned char), 1, new_bmp_file);
+			fwrite(&pixels[i][j].red, sizeof(unsigned char), 1, new_bmp_file);
+		}
+		if (bmp.bmpinf.height > bmp.bmpinf.width) {
+			unsigned char padding = 0;
+			fwrite(&padding, sizeof(unsigned char), bmp.bmpinf.width % 4, new_bmp_file);
+		}
+
+	}
+}
+
+void median_filtration(char* file_name) {
+	BMPFILE bmp;
+	printf("\nInput a size of filter for median filtration: ");
+	int size_filter = filter_check();
+	FILE* file = file_open(file_name);
+	FILE* new_file = new_file_open("MEDIANFILTER.bmp");
+
+	fread(&bmp, sizeof(BMPFILE), 1, file);
+	fwrite(&bmp, sizeof(BMPFILE), 1, new_file);
+
+	push_new_filter(bmp, file, new_file, size_filter);
+
+	fclose(file);
+	fclose(new_file);
+	printf("\n%s was median-filtered in \"MEDIANFILTER.bmp\" file\n", file_name);
+}
 

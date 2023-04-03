@@ -30,10 +30,19 @@ double gamma_degree_check() {
 	return degree;
 }
 
+int filter_check() {
+	int filter = 0;
+	while (scanf_s("%d", &filter) == 0 || filter < 0 || getchar() != '\n') {
+		printf("\nWrong filter input! Try again: ");
+		rewind(stdin);
+	}
+	return filter;
+}
+
 int choice_menu() {
 	int choice = 0;
-	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 6 || getchar() != '\n') {
-		printf("\nYou need to pick 1 - 6: ");
+	while (scanf_s("%d", &choice) == 0 || choice <= 0 || choice > 7 || getchar() != '\n') {
+		printf("\nYou need to pick 1 - 7: ");
 		rewind(stdin);
 	}
 	return choice;
@@ -68,6 +77,10 @@ void menu(char** file_name) {
 		menu(file_name);
 		break;
 	case 6:
+		median_filtration((*file_name));
+		menu(file_name);
+		break;
+	case 7:
 		exit(NORMAL_EXIT);
 	default:
 		exit(ERROR_EXIT);
