@@ -1,6 +1,6 @@
 #include"error.h"
 
-FILE* file_open(char* file_name) {
+FILE* file_open(const char* file_name) {
 	FILE* bmp_file = NULL;
 	errno_t error;
 	error = fopen_s(&bmp_file, file_name, "rb");
@@ -11,7 +11,7 @@ FILE* file_open(char* file_name) {
 	return bmp_file;
 }
 
-FILE* new_file_open(char* file_name) {
+FILE* new_file_open(const char* file_name) {
 	FILE* bmp_file = NULL;
 	errno_t error;
 	error = fopen_s(&bmp_file, file_name, "wb");
