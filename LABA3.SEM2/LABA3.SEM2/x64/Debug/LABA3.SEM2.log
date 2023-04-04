@@ -1,3 +1,20 @@
-﻿  functions.c
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\functions.c(7,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+﻿  bmp.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(34,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(35,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(52,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(93,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(94,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(109,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(150,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(201,24): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(202,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(208,39): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(209,40): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(230,24): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\bmp.c(231,25): warning C4018: <: несоответствие типов со знаком и без знака
+  memory.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\memory.c(5,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA3.SEM2\LABA3.SEM2\memory.c(12,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  LINK : не найден или не выполнена сборка C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA3.SEM2\x64\Debug\LABA3.SEM2.exe при последней инкрементной компоновке; выполняется полная компоновка
   LABA3.SEM2.vcxproj -> C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA3.SEM2\x64\Debug\LABA3.SEM2.exe

@@ -28,7 +28,8 @@ void print_bmp(char* file_name) {
 }
 
 void push_bw_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {
-	PIXEL pixels, new_pixels;
+	PIXEL pixels;
+	PIXEL new_pixels;
 	unsigned char bw_color;
 	for (int i = 0; i < bmp.bmpinf.height; i++) {
 		for (int j = 0; j < bmp.bmpinf.width; j++) {
@@ -45,7 +46,8 @@ void push_bw_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {
 }
 
 void push_bw_pixels_high(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {
-	PIXEL pixels, new_pixels;
+	PIXEL pixels;
+	PIXEL new_pixels;
 	unsigned char bw_color;
 	for (int i = 0; i < bmp.bmpinf.data_size; i += 3) {
 		fread(&pixels, sizeof(PIXEL), 1, bmp_file);
@@ -86,7 +88,8 @@ void bw_conversion(char* file_name) {
 }
 
 void push_negative_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {
-	PIXEL pixels, new_pixels;
+	PIXEL pixels;
+	PIXEL new_pixels;
 	for (int i = 0; i < bmp.bmpinf.height; i++) {
 		for (int j = 0; j < bmp.bmpinf.width; j++) {
 			fread(&pixels, sizeof(PIXEL), 1, bmp_file);
@@ -101,7 +104,8 @@ void push_negative_pixels_wide(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) 
 }
 
 void push_negative_pixels_high(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file) {
-	PIXEL pixels, new_pixels;
+	PIXEL pixels;
+	PIXEL new_pixels;
 	for (int i = 0; i < bmp.bmpinf.data_size; i += 3) {
 		fread(&pixels, sizeof(PIXEL), 1, bmp_file);
 
@@ -172,7 +176,9 @@ void gamma_correction(char* file_name) {
 }
 
 int compare(const void* first_pointer, const void* second_pointer) {
-	return (*(unsigned char*)first_pointer - *(unsigned char*)second_pointer);
+	const unsigned char* current_byte = (const unsigned char*)first_pointer;
+	const unsigned char* next_byte = (const unsigned char*)second_pointer;
+	return ((*current_byte) - (*next_byte));
 }
 
 void sort_color_channels(unsigned char* channel_blue, unsigned char* channel_green, unsigned char* channel_red, int size_filter) {
