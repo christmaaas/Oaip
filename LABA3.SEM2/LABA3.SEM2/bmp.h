@@ -66,4 +66,12 @@ void push_gamma_correction(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, doub
 
 void gamma_correction(char* file_name);
 
+int compare(const void* first_pointer, const void* second_pointer);
+
+void sort_color_channels(unsigned char* channel_blue, unsigned char* channel_green, unsigned char* channel_red, int size_filter);
+
+void push_new_filter(BMPFILE bmp, FILE* bmp_file, FILE* new_bmp_file, int size_filter);
+
 void median_filtration(char* file_name);
+
+

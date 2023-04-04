@@ -10,14 +10,15 @@ char* input_file_name() {
 }
 
 void menu_info(char* file_name) {
-	printf("\n----- MENU -----\n");
-	printf("1 - Main info about %s\n", file_name);
-	printf("2 - Convert %s to Black-While\n", file_name);
-	printf("3 - Convert %s to Negative\n", file_name);
-	printf("4 - Gamma-correction %s\n", file_name);
-	printf("5 - Pick another BMP-File\n");
-	printf("6 - Exit\n");
-	printf("----------------\n");
+	printf("\n------------- MENU -------------\n");
+	printf("1 - Main info about \"%s\"\n", file_name);
+	printf("2 - Convert \"%s\" to Black-While\n", file_name);
+	printf("3 - Convert \"%s\" to Negative\n", file_name);
+	printf("4 - Gamma-correction of \"%s\"\n", file_name);
+	printf("5 - Median-filtration of \"%s\"\n", file_name);
+	printf("6 - Pick another BMP-File\n");
+	printf("7 - Exit\n");
+	printf("--------------------------------\n");
 	printf("Your choice: ");
 }
 
@@ -49,6 +50,7 @@ int choice_menu() {
 }
 
 void change_bmp_file(char** file_name) {
+	printf("\n");
 	(*file_name) = input_file_name();
 }
 
@@ -73,11 +75,11 @@ void menu(char** file_name) {
 		menu(file_name);
 		break;
 	case 5:
-		change_bmp_file(file_name);
+		median_filtration((*file_name));
 		menu(file_name);
 		break;
 	case 6:
-		median_filtration((*file_name));
+		change_bmp_file(file_name);
 		menu(file_name);
 		break;
 	case 7:
