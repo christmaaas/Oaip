@@ -8,3 +8,18 @@ int pick_answer() {
 	}
 	return pick;
 }
+
+char* input_str() {
+	char* string = (char*)calloc(256, sizeof(char));
+	gets_s(string, 255);
+	int size = strlen(string);
+	string = (char*)realloc(string, size + 1);
+	return string;
+}
+
+void print_answer() {
+	printf("----------------\n");
+	printf("1 - Yes | 2 - No\n");
+	printf("----------------\n");
+	printf("Your answer: ");
+}
