@@ -20,6 +20,10 @@ node* get_new_node(const char* question);
 
 node* footballer_tree_traversal(node* root);
 
+void free_tree(node* root);
+
+void free_node(node* tree_node);
+
 void add_new_footballer(node* tree_leaf);
 
 void push_database(FILE* database, node* root);

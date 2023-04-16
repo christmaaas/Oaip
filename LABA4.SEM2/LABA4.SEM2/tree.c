@@ -11,6 +11,24 @@ node* get_new_node(const char* question) {
     return tree_node;
 }
 
+void free_tree(node* root) {
+    if (root == NULL) {
+        return;
+    }
+    free_tree(root->yes);
+    free_tree(root->no);
+    if (root->question != NULL) {
+        free(root->question);
+    }
+    free(root);
+}
+
+void free_node(node* tree_node) {
+    free(tree_node->question);
+    free(tree_node->yes);
+    free(tree_node->no);
+}
+
 node* footballer_tree_traversal(node* root) {
     int pick = 0;
     
