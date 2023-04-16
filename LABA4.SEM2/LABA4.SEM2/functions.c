@@ -10,8 +10,8 @@ int pick_answer() {
 }
 
 char* input_str() {
-	char* string = (char*)calloc(256, sizeof(char));
-	gets_s(string, 255);
+	char* string = (char*)calloc(STRING_SIZE, sizeof(char));
+	gets_s(string, STRING_SIZE);
 	int size = strlen(string);
 	string = (char*)realloc(string, size + 1);
 	return string;
@@ -22,4 +22,11 @@ void print_answer() {
 	printf("1 - Yes | 2 - No\n");
 	printf("----------------\n");
 	printf("Your answer: ");
+}
+
+void delete_symbol(char** string) {
+	for (int i = 0; i < strlen((*string)); i++) {
+		(*string)[i] = (*string)[i + 1];
+	}
+	(*string)[strcspn((*string), "\n")] = 0;
 }
