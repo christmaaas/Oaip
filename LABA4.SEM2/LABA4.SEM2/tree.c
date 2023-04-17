@@ -1,6 +1,7 @@
 #include"tree.h"
 #include"functions.h"
 #include"error.h"
+#include"log.h"
 
 node* get_new_node(const char* question) {
     node* tree_node = (node*)malloc(sizeof(node));
@@ -29,38 +30,44 @@ void free_node(node* tree_node) {
     free(tree_node->no);
 }
 
-node* footballer_tree_traversal(node* root) {
+node* footballer_tree_traversal(FILE* log_file, node* root) {
     int pick = 0;
     
     if (root == NULL) {
+        push_log(log_file, "Error: empty pointer. Exit from programm", "error");
         exit(PROGRAMM_ERROR);
     }
     
     printf("\n%s?\n", root->question);
+    push_game_log(log_file, root->question, "game", "Question");
     print_answer();
     pick = pick_answer();
     if (pick == YES) {
+        push_game_log(log_file, "Yes", "game", "Answer");
         if (root->yes == NULL) {
             printf("\nI guessed right!\n");
+            push_log(log_file, "Programm guest the object", "game");
             return NULL;
         }
         else {
-            return footballer_tree_traversal(root->yes);
+            return footballer_tree_traversal(log_file, root->yes);
         }
     }
     else {
+        push_game_log(log_file, "No", "game", "Answer");
         if (root->no == NULL) {
             printf("\nI didnt guessed :(\n");
+            push_log(log_file, "Programm didnt guest the object", "game");
             return root;
         }
         else {
-            return footballer_tree_traversal(root->no);
+            return footballer_tree_traversal(log_file, root->no);
         }
     }
     return NULL;
 }
 
-void add_new_footballer(node* tree_leaf) {
+void add_new_footballer(FILE* log_file, node* tree_leaf) {
     int pick = 0;
     char* new_footballer_name = NULL;
     char* new_question = NULL;
@@ -69,11 +76,13 @@ void add_new_footballer(node* tree_leaf) {
     node* tree_leaf_buf = NULL;
     
     if (tree_leaf == NULL) {
+        push_log(log_file, "Error: empty pointer. Exit from programm", "error");
         exit(PROGRAMM_ERROR);
     }
     
     printf("\nWhat it was the footballer?: ");
     new_footballer_name = input_str();
+    push_log(log_file, new_footballer_name, "game");
     printf("What is distinguishes %s from %s?: ", new_footballer_name, tree_leaf->question);
     new_question = input_str();
     printf("What is answer for %s to \"%s\"?\n",new_footballer_name, new_question);
@@ -101,31 +110,39 @@ void add_new_footballer(node* tree_leaf) {
 }
 
 void new_game() {
-    FILE* file = NULL;
+    FILE* database_file = NULL;
+    FILE* log_file = NULL;
     node* temp = NULL;
     node* first_question = NULL;
-    file = file_open("database.txt");
-    if (file == NULL) {
+    log_file = file_create("logbook.txt");
+    push_log(log_file, "Game was started.", "game");
+    if ((database_file = file_open("database.txt")) == NULL) {
         first_question = get_new_node("Cristiano Ronaldo");
+        push_log(log_file, "Error to open \"database.txt\" file in \"r\" mode.", "error");
+        push_log(log_file, "Object \"Cristiano Ronaldo\" has created.", "game");
     }
     else {
-        first_question = load_database(file);
-        fclose(file);
+        first_question = load_database(database_file);
+        push_log(log_file, "\"database.txt\" was uploaded successfully.", "game");
+        fclose(database_file);
     }
     printf("Hello! I am football Akinator! Try to beat me, good luck!\n");
     
     while (INFINITE_CYCLE) {
-        temp = footballer_tree_traversal(first_question);
+        temp = footballer_tree_traversal(log_file, first_question);
         if (temp == NULL) {
             break;
         }
-        add_new_footballer(temp);
+        add_new_footballer(log_file, temp);
     }
     printf("\nThanks for game! Come back and play again!\n");
-    
-    file = file_create("database.txt");
-    push_database(file, first_question);
-    fclose(file);
+    push_log(log_file, "Game was ended.", "game");
+
+    database_file = file_create("database.txt");
+    push_database(database_file, first_question);
+    fclose(database_file);
+    push_log(log_file, "\"database.txt\" was saved.", "game");
+    fclose(log_file);
 
     free(first_question);
     free(temp);
