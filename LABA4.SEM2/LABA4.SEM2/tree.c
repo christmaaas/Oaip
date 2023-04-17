@@ -169,7 +169,8 @@ node* load_database(FILE* database) {
     char* root_node = (char*)malloc(STRING_SIZE);
    
     if (fgets(root_node, STRING_SIZE, database) == NULL) {
-        return;
+        free(root_node);
+        return NULL;
     }
     
     if (root_node[0] == 'Q') {

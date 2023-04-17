@@ -1,69 +1,7 @@
-QHe is retired
-Qhe is brazilian
-QHe plays at Barcelona
-ARonaldinho
-QHe plays for Real
-QHe has 2 Ballon Doors
-ARonaldo Nazario
-QHe is LB
-ARoberto Carlos
-ARobinho
-ACafu
-QHe is italian
-QHe has 1 Ballon Door
-QHe has funny haircut
-AZola
-ACannavaro
-QHe trained Man City
-AMancini
-APirlo
-QHe is a CDM
-QHe is french
-AMakelele
-ADavies
-QHe is ST
-ATrezeguet
-QHe is argentine
-ASimeone
-QHe is portugese
-AEusebio
+QHe is retire
+Qhe is italian
+AMaldini
 AZidane
-QHe is french
-QHe plays at Barcelona
-QHe is CB
-AUmtiti
-QHe is lives Barcleona
-AGriezmann
-ADembele
-Qhe plays at France
-QHe is ST
-AMbappe
-ATcouameni
-QHe plays in Bundesliga
-AKolo-Muani
-ABenzema
-QHe is Chroatian
-AModric
-QHe is english
-QHe is CB
-AMaguire
-QHE plays for Chelsea
-AMaunt
-ARashford
-QHe play for Inter
-QHe is Belgian
-ALukaku
-ALautaro
-QHE is 19 y.o.
-QHe is CM
-ABellinghem
-AAdeyemi
-QHe is CM
-ADe JonG
-QHe has 7 Ballon Door
-AMessi
-QHE is cool
-QHe is very cool
-AArtem Slinko
-ABurmalda
+QHe is brazilian
+AVinicius
 ACristiano Ronaldo
