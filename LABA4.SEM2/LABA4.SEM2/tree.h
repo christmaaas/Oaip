@@ -1,13 +1,21 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define INFINITE_CYCLE 1
+
 #define PROGRAMM_ERROR -3
+
 #define STRING_SIZE 256
+
+#define QUESTION 'Q'
+
+#define ANSWER 'A'
+
 #define YES 1
+
 #define NO 2
 
 typedef struct node {
@@ -26,8 +34,6 @@ void free_node(node* tree_node);
 
 void add_new_footballer(FILE* log_file, node* tree_leaf);
 
-void push_database(FILE* database, node* root);
+void push_database(FILE* database_file, node* root);
 
-node* load_database(FILE* database);
-
-void new_game();
+node* load_database(FILE* database_file);

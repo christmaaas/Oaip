@@ -1,4 +1,4 @@
-#include"error.h"
+#include "resources.h"
 
 FILE* file_create(const char* file_name) {
 	FILE* file = NULL;

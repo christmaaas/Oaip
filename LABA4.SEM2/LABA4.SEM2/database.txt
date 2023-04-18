@@ -1,7 +1,131 @@
-QHe is retire
-Qhe is italian
-AMaldini
+QHe is retired
+QHe is French
+QHe is ST
+QHe played for Manchester United
+ACantona
+QHe played for Arsenal
+AAnelka
+ATrezeguet
+QHe played for Arsenal
+AViera
+QHe is a France all time top-scorer
+AHenry
 AZidane
+QHe is Brazilian
+QHe is a "Magician"
+ARonaldinho
+QHe is best RB of all time
+ACafu
+QHe has 2 Ballon Doors
+ARonaldo Nazario
+QHe has Ballon Door
+QHe played for Barcelona
+ARivaldo
+AKaka
+ARobinho
+QHe is German
+QHe has 2 Ballon Doors
+ABeckenbauer
+QHe is 2014 WC top-scorer
+AKlose
+QHe played for Bayern
+QHe is RB
+ALahm
+QHe played for Borussia MG
+AMatthaus
+ASchweinsteiger
+QHe is GK
+AWidenfeller
+ABallack
+QHe is Englishman
+QHe has over 30 mil subs in instagram?
+ABeckham
+QHe is CAM
+QHe played for Liverpool
+AJerrard
+ALampard
+QHe played for Chelsea
+QHe is LB
+ACole
+ATerry
+QHe played for Manchester United
+QHe is CM
+QHe trained this club
+ACarrick
+AScholes
+QHe has 700+ matches played for whis club
+AGiggs
+ARooney
+ACrauch
+QHe is Spanish
+QHe played for Real Madrid
+QHe is CDM
+AHierro
+ARaul
+QHe played for Barcelona
+QHe is CB
+APique
+QHe is ST
+AVilla
+AXavi
+QHe played for Liverpool
+ATorres
+AButragueno
+QHe is Dutch
+QHe has 3 UEFA CL
+AVan Basten
+AKoeman
+QHe is Argentine?
+ACrespo
+QHe is italian
+APirlo
+AArshavin
+QHe is Englishman
+QHe is playing for Man United
+QHe is LB
+AShaw
+ARashford
+AStones
+QHe is play for Barcelona
+QHe is CB
+AAraujo
+QHe is GK
+AGavi
+QHe is LaLiga top scorer
+ALewandowski
+QHe plays for barca more than 10 years
+QHe is best Barca player of all time
+ABusquets
+AAlba
+ABalde
+QHe is playing at Real Madrid
+QHe is best madridista of all time
+AKroos
 QHe is brazilian
+QHe played in 2022 UEFA CL Final
+QHe is ST
+ARodrygo
 AVinicius
+AMilitao
+AMariano
+QHe played in LaLiga
+QHe is playing in EPL
+QHe has won UEFA CL
+ACasemiro
+AMartial
+QHe is playing at Man City
+ARodri
+QHe is playing in Chelsea
+ACucurella
+QHe is the best footballer of all time
 ACristiano Ronaldo
+AMessi
+QHe played for Real Madrid
+QHe is argentine
+ALisandro
+AVarane
+QHe is Playing in Seria A
+QHe is Serbian
+AVlahovic
+ADi Maria
+AHaaland

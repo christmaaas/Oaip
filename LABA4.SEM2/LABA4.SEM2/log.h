@@ -1,9 +1,14 @@
 #pragma once
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
 
-#include"error.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define QUESTION 'Q'
+
+#define ANSWER 'A'
+
+#define OBJECT 'O'
 
 void push_log(FILE* log_file, char* log_info, char* log_variety);
 

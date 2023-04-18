@@ -127,15 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="error.c" />
-    <ClCompile Include="functions.c" />
+    <ClCompile Include="resources.c" />
+    <ClCompile Include="game.c" />
     <ClCompile Include="log.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="tree.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="error.h" />
-    <ClInclude Include="functions.h" />
+    <ClInclude Include="resources.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="tree.h" />
   </ItemGroup>
