@@ -37,8 +37,8 @@ void new_game() {
     FILE* database_file = NULL;
     FILE* log_file = NULL;
 
-    node* temp = NULL;
-    node* first_question = NULL;
+    node* node_to_change = NULL;
+    node* root = NULL;
 
     log_file = file_create("logbook.txt");
 
@@ -46,12 +46,12 @@ void new_game() {
     push_log(log_file, "Game was started.", "game");
 
     if ((database_file = file_open("database.txt")) == NULL) {
-        first_question = get_new_node("Cristiano Ronaldo");
+        root = get_new_node("Cristiano Ronaldo");
         push_log(log_file, "Error to open \"database.txt\" file in \"r\" mode.", "error");
         push_log(log_file, "Object \"Cristiano Ronaldo\" has created.", "game");
     }
     else {
-        first_question = load_database(database_file);
+        root = load_database(database_file);
         push_log(log_file, "\"database.txt\" was uploaded successfully.", "app");
         fclose(database_file);
     }
@@ -59,11 +59,11 @@ void new_game() {
     printf("Hello! I am football Akinator! Try to beat me, good luck!\n");
 
     while (INFINITE_CYCLE) {
-        temp = footballer_tree_traversal(log_file, first_question);
-        if (temp == NULL) {
+        node_to_change = footballer_tree_traversal(log_file, root);
+        if (node_to_change == NULL) {
             break;
         }
-        add_new_footballer(log_file, temp);
+        add_new_footballer(log_file, node_to_change);
     }
 
     printf("\nThanks for game! Come back and play again!\n");
@@ -72,7 +72,7 @@ void new_game() {
 
     database_file = file_create("database.txt");
 
-    push_database(database_file, first_question);
+    push_database(database_file, root);
 
     fclose(database_file);
 
@@ -81,5 +81,5 @@ void new_game() {
 
     fclose(log_file);
 
-    free_tree(first_question);
+    free_tree(root);
 }

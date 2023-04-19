@@ -32,7 +32,7 @@ void free_tree(node* root);
 
 void free_node(node* tree_node);
 
-void add_new_footballer(FILE* log_file, node* tree_leaf);
+void add_new_footballer(FILE* log_file, node* node_to_change);
 
 void push_database(FILE* database_file, node* root);
 

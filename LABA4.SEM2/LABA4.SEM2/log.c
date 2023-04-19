@@ -14,7 +14,7 @@ void push_log(FILE* log_file, char* log_info, char* log_variety) {
 	fprintf(log_file, "%s\n", "----------------------------------------------------\n");
 }
 
-void push_game_log(FILE* log_file, char* log_info, char* log_variety, char* game_variety) {
+void push_game_log(FILE* log_file, char* log_info, char* log_variety, char* question_or_answer) {
 	time_t current_time = time(NULL);
 	struct tm time_info;
 	
@@ -25,13 +25,13 @@ void push_game_log(FILE* log_file, char* log_info, char* log_variety, char* game
 	fprintf(log_file, "Time: %d:%d:%d\n", time_info.tm_hour, time_info.tm_min, time_info.tm_sec);
 	fprintf(log_file, "[%s]\n", log_variety);
 	
-	if (game_variety[0] == QUESTION) {
-		fprintf(log_file, "\n%s: %s?\n", game_variety, log_info);
+	if (question_or_answer[0] == QUESTION) {
+		fprintf(log_file, "\n%s: %s?\n", question_or_answer, log_info);
 	}
-	else if (game_variety[0] == ANSWER) {
-		fprintf(log_file, "\n%s: %s\n", game_variety, log_info);
+	else if (question_or_answer[0] == ANSWER) {
+		fprintf(log_file, "\n%s: %s\n", question_or_answer, log_info);
 	}
-	else if (game_variety[0] == OBJECT) {
+	else if (question_or_answer[0] == OBJECT) {
 		fprintf(log_file, "\nUser-specified object \"%s\" was added.\n", log_info);
 	}
 	

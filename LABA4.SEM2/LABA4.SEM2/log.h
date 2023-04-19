@@ -12,4 +12,4 @@
 
 void push_log(FILE* log_file, char* log_info, char* log_variety);
 
-void push_game_log(FILE* log_file, char* log_info, char* log_variety, char* game_variety);
+void push_game_log(FILE* log_file, char* log_info, char* log_variety, char* question_or_answer);

@@ -89,7 +89,7 @@ node* footballer_tree_traversal(FILE* log_file, node* root) {
     return NULL;
 }
 
-void add_new_footballer(FILE* log_file, node* tree_leaf) {
+void add_new_footballer(FILE* log_file, node* node_to_change) {
     int pick = 0;
 
     char* new_footballer_name = NULL;
@@ -99,7 +99,7 @@ void add_new_footballer(FILE* log_file, node* tree_leaf) {
     node* new_question_node = NULL;
     node* new_footballer = NULL;
 
-    if (tree_leaf == NULL) {
+    if (node_to_change == NULL) {
         push_log(log_file, "Error: empty pointer. Exit from programm.", "error");
         
         exit(PROGRAMM_ERROR);
@@ -111,7 +111,7 @@ void add_new_footballer(FILE* log_file, node* tree_leaf) {
 
     push_game_log(log_file, new_footballer_name, "game", "Object");
 
-    printf("What is distinguishes %s from %s?: ", new_footballer_name, tree_leaf->question);
+    printf("What is distinguishes %s from %s?: ", new_footballer_name, node_to_change->question);
 
     new_question = input_str();
 
@@ -125,16 +125,16 @@ void add_new_footballer(FILE* log_file, node* tree_leaf) {
     new_question_node = get_new_node(new_question);
 
     if (pick == YES) {
-        tree_leaf->yes = new_footballer;
-        tree_leaf->no = new_question_node;
+        node_to_change->yes = new_footballer;
+        node_to_change->no = new_question_node;
     }
     else {
-        tree_leaf->no = new_footballer;
-        tree_leaf->yes = new_question_node;
+        node_to_change->no = new_footballer;
+        node_to_change->yes = new_question_node;
     }
 
-    temp_string = tree_leaf->question;
-    tree_leaf->question = new_question_node->question;
+    temp_string = node_to_change->question;
+    node_to_change->question = new_question_node->question;
     new_question_node->question = temp_string;
 
     free(new_footballer_name);
