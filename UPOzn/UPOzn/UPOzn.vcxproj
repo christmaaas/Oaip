@@ -127,13 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Func.c" />
-    <ClCompile Include="Main.c" />
-    <ClCompile Include="Morse.c" />
+    <ClCompile Include="menu.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="morse.c" />
+    <ClCompile Include="resources.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Func.h" />
-    <ClInclude Include="Morse.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="morse.h" />
+    <ClInclude Include="resources.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,3 @@
+Hello, my name is Artem(BSUIR student), now I am writing this text for my "programm" with file functions. 
+I think today was a good day!
+Good luck and see you soon ;)
