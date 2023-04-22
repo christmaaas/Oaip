@@ -213,6 +213,19 @@ void print_file(char* file_name) {
 	fclose(file);
 }
 
+void check_for_three_spaces(char* string, int* index) {
+	if (string[(*index) + 1] == SPACE && string[(*index) + 2] == SPACE) {
+		printf("%c", alphabet[71].symbol);
+		
+		(*index) += THREE_SPACES;
+	}
+	else if (string[(*index) + 1] == SPACE) {
+		printf("%c", SPACE);
+
+		(*index)++;
+	}
+}
+
 void morse_encrypt_file(morse_code* alphabet) {
 	print_file("Morse.txt");
 
@@ -259,32 +272,30 @@ void morse_decrypt_file(morse_code* alphabet) {
 	
 	while (text_to_decrypt[i] != NULL_CHARACTER) {
 		j = 0;
-		
+
 		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = text_to_decrypt[i];
 			encrypted_text[j + 1] = NULL_CHARACTER;
 			i++;
 			j++;
 		}
-		
+
 		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
 			if (!strcmp(encrypted_text, alphabet[k].code)) {
 				printf("%c", alphabet[k].symbol);
-				
+
 				encrypted_text[0] = NULL_CHARACTER;
 
 				break;
 			}
 		}
 		
-		if (text_to_decrypt[i + 1] == SPACE) {
-			printf("%c", SPACE);
+		check_for_three_spaces(text_to_decrypt, &i);
+
+		if (text_to_decrypt[i] != NULL_CHARACTER) {
 			i++;
 		}
-		else if (text_to_decrypt[i] != NULL_CHARACTER) {
-			i++;
-		}
-	}
+	} 
 	
 	printf("\n");
 	
