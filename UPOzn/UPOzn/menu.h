@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_SIZE_OF_ENCRYPTED_STRING 6
+#define MAX_SIZE_OF_ENCRYPTED_STRING 8
 
 #define SIZE_OF_STRING 1024
 

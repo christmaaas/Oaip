@@ -174,19 +174,33 @@ void morse_decrypt(morse_code* alphabet) {
 }
 
 char* read_file(char* file_name) {
+	int count = 0;
+
 	FILE* file = file_open(file_name);
 
+	char* string = (char*)calloc(SIZE_OF_STRING, sizeof(char));
 
+	char symbol = fgetc(file);
+
+	while (!feof(file)) {
+
+		string[count] = symbol;
+		count++;
+
+		symbol = fgetc(file);
+	}
+
+	fclose(file);
+	
+	return string;
 }
 
 void print_file(char* file_name) {
-	char symbol;
-
 	FILE* file = file_open(file_name);
 
 	printf("\nText: ");
 
-	symbol = fgetc(file);
+	char symbol = fgetc(file);
 
 	while (!feof(file)) {
 		printf("%c", symbol);
@@ -215,6 +229,7 @@ void morse_encrypt_file(morse_code* alphabet) {
 
 				if (symbol == SPACE) {
 					printf("%s", alphabet[i].code);
+					
 					break;
 				}
 
@@ -231,50 +246,46 @@ void morse_encrypt_file(morse_code* alphabet) {
 }
 
 void morse_decrypt_file(morse_code* alphabet) {
-	char* encrypted_text = (char*)calloc(6, 1);
-	char* text_to_decrypt = (char*)calloc(512, 1);
+	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, 1);
+	char* text_to_decrypt = (char*)calloc(SIZE_OF_STRING, 1);
 	
-	int i = 0, j = 0, k = 0;
+	int i = 0, j = 0;
 
-	print_file(alphabet);
+	print_file("Morse.txt");
 
-	FILE* file = file_open("Morse.txt");
-
-	char symbol = fgetc(file);
+	text_to_decrypt = read_file("Morse.txt");
 	
-	while (!feof(file)) {
+	printf("\nDecrypted text: ");
+	
+	while (text_to_decrypt[i] != NULL_CHARACTER) {
+		j = 0;
 		
-		text_to_decrypt[i] = symbol;
-		i++;
-		
-		symbol = fgetc(file);
-	}
-
-	fclose(file);
-
-	printf("Decrypted text: ");
-	while (text_to_decrypt[j] != '\0') {
-		k = 0;
-		while ((text_to_decrypt[j] != ' ') && (text_to_decrypt[j] != '\0')) {
-			encrypted_text[k] = text_to_decrypt[j];
-			encrypted_text[k + 1] = '\0';
-			k++;
+		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
+			encrypted_text[j] = text_to_decrypt[i];
+			encrypted_text[j + 1] = NULL_CHARACTER;
+			i++;
 			j++;
 		}
-		for (int t = 0; t < 68; t++) {
-			if (!strcmp(encrypted_text, alphabet[t].code)) {
-				printf("%c", alphabet[t].symbol);
+		
+		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
+			if (!strcmp(encrypted_text, alphabet[k].code)) {
+				printf("%c", alphabet[k].symbol);
+				
+				encrypted_text[0] = NULL_CHARACTER;
+
 				break;
 			}
 		}
-		if (text_to_decrypt[j + 1] == ' ') {
-			printf("%c", alphabet[52].symbol);
-			j++;
+		
+		if (text_to_decrypt[i + 1] == SPACE) {
+			printf("%c", SPACE);
+			i++;
 		}
-		else if (text_to_decrypt[j] != '\0') {
-			j++;
+		else if (text_to_decrypt[i] != NULL_CHARACTER) {
+			i++;
 		}
 	}
+	
 	printf("\n");
 	
 	free(encrypted_text);
