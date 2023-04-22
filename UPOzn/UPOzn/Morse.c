@@ -2,6 +2,7 @@
 #include "morse.h"
 #include "menu.h"
 #include "resources.h"
+#include "log.h"
 
 morse_code alphabet[] = {
 	{".-", 'A'},
@@ -125,17 +126,19 @@ void morse_encrypt(morse_code* alphabet) {
 
 	printf("\n");
 
+	push_log(log)
+
 	free(text_to_encrypt);
 }
 
 void morse_decrypt(morse_code* alphabet) {
+	printf("\nText: ");
+	
 	char* text_to_decrypt = input_string();
 
 	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
 
 	int i = 0, j = 0;
-
-	printf("\nText: ");
 
 	printf("\nDecrypted text: ");
 
@@ -144,14 +147,18 @@ void morse_decrypt(morse_code* alphabet) {
 
 		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = text_to_decrypt[i];
-			encrypted_text[j + 1] = NULL_CHARACTER;
+		
 			i++;
 			j++;
 		}
 
+		encrypted_text[j] = NULL_CHARACTER;
+
 		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
 			if (!strcmp(encrypted_text, alphabet[k].code)) {
 				printf("%c", alphabet[k].symbol);
+
+				encrypted_text[0] = NULL_CHARACTER;
 
 				break;
 			}
@@ -275,10 +282,12 @@ void morse_decrypt_file(morse_code* alphabet) {
 
 		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = text_to_decrypt[i];
-			encrypted_text[j + 1] = NULL_CHARACTER;
+			
 			i++;
 			j++;
 		}
+
+		encrypted_text[j] = NULL_CHARACTER;
 
 		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
 			if (!strcmp(encrypted_text, alphabet[k].code)) {

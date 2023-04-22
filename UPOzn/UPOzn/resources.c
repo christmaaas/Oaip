@@ -15,3 +15,18 @@ FILE* file_open(const char* file_name) {
 
 	return file;
 }
+
+FILE* file_create(const char* file_name) {
+	FILE* file = NULL;
+
+	errno_t error;
+
+	error = fopen_s(&file, file_name, "w");
+
+	if (error != 0) {
+		printf("\nFile open error\n");
+		exit(FILE_ERROR);
+	}
+
+	return file;
+}

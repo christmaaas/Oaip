@@ -24,7 +24,7 @@ void menu_info() {
 	printf("Your choice: ");
 }
 
-void menu() {
+void menu(FILE* logbook) {
 	int choice = 0;
 
 	menu_info();
@@ -34,19 +34,19 @@ void menu() {
 	switch (choice) {
 	case 1:
 		morse_encrypt(alphabet);
-		menu();
+		menu(logbook);
 		break;
 	case 2:
 		morse_decrypt(alphabet);
-		menu();
+		menu(logbook);
 		break;
 	case 3:
 		morse_encrypt_file(alphabet);
-		menu();
+		menu(logbook);
 		break;
 	case 4:
 		morse_decrypt_file(alphabet);
-		menu();
+		menu(logbook);
 		break;
 	case 5:
 		exit(NORMAL_EXIT);

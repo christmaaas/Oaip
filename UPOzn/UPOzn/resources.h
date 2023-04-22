@@ -7,3 +7,5 @@
 #define FILE_ERROR -3
 
 FILE* file_open(const char* file_name);
+
+FILE* file_create(const char* file_name);
