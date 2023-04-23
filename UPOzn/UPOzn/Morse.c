@@ -181,7 +181,7 @@ void morse_decrypt() {
 	free(encrypted_text);
 }
 
-char* read_file(char* file_name) {
+char* read_file(const char* file_name) {
 	int count = 0;
 
 	FILE* file = file_open(file_name, "r");
@@ -203,7 +203,7 @@ char* read_file(char* file_name) {
 	return string;
 }
 
-void print_file(char* file_name) {
+void print_file(const char* file_name) {
 	FILE* file = file_open(file_name, "r");
 
 	printf("\nText: ");
@@ -221,7 +221,7 @@ void print_file(char* file_name) {
 	fclose(file);
 }
 
-void check_for_three_spaces(char* string, int* index) {
+void check_for_three_spaces(const char* string, int* index) {
 	if (string[(*index) + 1] == SPACE && string[(*index) + 2] == SPACE) {
 		printf("%c", alphabet[71].symbol);
 		
@@ -269,8 +269,8 @@ void morse_encrypt_file() {
 }
 
 void morse_decrypt_file() {
-	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, 1);
-	char* text_to_decrypt = (char*)calloc(SIZE_OF_STRING, 1);
+	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
+	char* text_to_decrypt = (char*)calloc(SIZE_OF_STRING, sizeof(char));
 	
 	int i = 0, j = 0;
 

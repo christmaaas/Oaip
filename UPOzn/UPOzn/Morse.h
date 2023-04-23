@@ -27,11 +27,11 @@ void morse_encrypt();
 
 void morse_decrypt();
 
-void print_file(char* file_name);
+void print_file(const char* file_name);
 
-char* read_file(char* file_name);
+char* read_file(const char* file_name);
 
-void check_for_three_spaces(char* string, int* index);
+void check_for_three_spaces(const char* string, int* index);
 
 void morse_encrypt_file();
 

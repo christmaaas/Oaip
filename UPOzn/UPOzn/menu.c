@@ -8,7 +8,7 @@ int choice_menu() {
 
 	while (scanf_s("%d", &choice) == 0 || choice < 1 || choice > 5 || getchar() != '\n') {
 		printf("\nWRONG INPUT: You need to pick 1 - 5: ");
-		push_log(log_type[ERROR], "Wrong input", "a");
+		push_log(log_type[ERROR], "Programm error: wrong input", "a");
 		rewind(stdin);
 	}
 
