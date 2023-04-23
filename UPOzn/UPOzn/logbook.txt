@@ -1,1 +1,14 @@
-[22.4.2023 23:18:56] [app] [Programm runs.]
+[23.04.2023 08:28:09] [app] Programm runs.
+[23.04.2023 08:28:13] [morse] User text was encrypted.
+[23.04.2023 08:28:15] [morse] User text was encrypted.
+[23.04.2023 08:28:16] [morse] File text was decrypted.
+[23.04.2023 08:28:16] [error] Wrong input
+[23.04.2023 08:28:18] [morse] User text was encrypted.
+[23.04.2023 08:28:19] [error] Wrong input
+[23.04.2023 08:28:20] [morse] User text was encrypted.
+[23.04.2023 08:28:21] [morse] File text was decrypted.
+[23.04.2023 08:28:21] [morse] File text was decrypted.
+[23.04.2023 08:28:23] [morse] User text was encrypted.
+[23.04.2023 08:28:23] [error] Wrong input
+[23.04.2023 08:28:25] [morse] User text was encrypted.
+[23.04.2023 08:28:26] [app] Programm ends.

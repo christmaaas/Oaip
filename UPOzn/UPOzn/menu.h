@@ -1,16 +1,16 @@
 #pragma once
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_SIZE_OF_ENCRYPTED_STRING 8
-
-#define SIZE_OF_STRING 1024
 
 #define PROGRAMM_ERROR -2
 
-#define NORMAL_EXIT 1
+typedef enum MENU {
+	ENCRYPT_STRING = 1,
+	DECRYPT_STRING,
+	ENCRYPT_FILE,
+	DECRYPT_FILE,
+	EXIT
+} MENU;
 
 int choice_menu();
 

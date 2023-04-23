@@ -1,6 +1,5 @@
 
 #include "morse.h"
-#include "menu.h"
 #include "resources.h"
 #include "log.h"
 
@@ -101,7 +100,7 @@ char* input_string() {
 	return string;
 }
 
-void morse_encrypt(morse_code* alphabet) {
+void morse_encrypt() {
 	printf("\nText: ");
 
 	char* text_to_encrypt = input_string();
@@ -126,12 +125,12 @@ void morse_encrypt(morse_code* alphabet) {
 
 	printf("\n");
 
-	push_log(log)
+	push_log(log_type[MORSE], "User text was encrypted.", "a");
 
 	free(text_to_encrypt);
 }
 
-void morse_decrypt(morse_code* alphabet) {
+void morse_decrypt() {
 	printf("\nText: ");
 	
 	char* text_to_decrypt = input_string();
@@ -176,6 +175,8 @@ void morse_decrypt(morse_code* alphabet) {
 
 	printf("\n");
 
+	push_log(log_type[MORSE], "User text was decrypted.", "a");
+
 	free(text_to_decrypt);
 	free(encrypted_text);
 }
@@ -183,7 +184,7 @@ void morse_decrypt(morse_code* alphabet) {
 char* read_file(char* file_name) {
 	int count = 0;
 
-	FILE* file = file_open(file_name);
+	FILE* file = file_open(file_name, "r");
 
 	char* string = (char*)calloc(SIZE_OF_STRING, sizeof(char));
 
@@ -203,7 +204,7 @@ char* read_file(char* file_name) {
 }
 
 void print_file(char* file_name) {
-	FILE* file = file_open(file_name);
+	FILE* file = file_open(file_name, "r");
 
 	printf("\nText: ");
 
@@ -233,10 +234,10 @@ void check_for_three_spaces(char* string, int* index) {
 	}
 }
 
-void morse_encrypt_file(morse_code* alphabet) {
+void morse_encrypt_file() {
 	print_file("Morse.txt");
 
-	FILE* file = file_open("Morse.txt");
+	FILE* file = file_open("Morse.txt", "r");
 
 	printf("\nEncrypted text: ");
 
@@ -263,9 +264,11 @@ void morse_encrypt_file(morse_code* alphabet) {
 	printf("\n");
 
 	fclose(file);
+
+	push_log(log_type[MORSE], "File text was encrypted.", "a");
 }
 
-void morse_decrypt_file(morse_code* alphabet) {
+void morse_decrypt_file() {
 	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, 1);
 	char* text_to_decrypt = (char*)calloc(SIZE_OF_STRING, 1);
 	
@@ -308,6 +311,8 @@ void morse_decrypt_file(morse_code* alphabet) {
 	
 	printf("\n");
 	
+	push_log(log_type[MORSE], "File text was decrypted.", "a");
+
 	free(encrypted_text);
 	free(text_to_decrypt);
 }

@@ -1,8 +1,14 @@
 #pragma once
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
 
+typedef enum LOG_TYPE {
+	APPLICATION,
+	ERROR,
+	MORSE
+} LOG_TYPE;
 
-void push_log(FILE* log_file, char* log_variety, char* log_info);
+char* log_type[];
+
+void push_log(const char* log_variety, const char* log_info, const char* file_mode);
