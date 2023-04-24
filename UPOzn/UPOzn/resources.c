@@ -3,7 +3,6 @@
 
 FILE* file_open(const char* file_name, const char* mode) {
 	FILE* file = NULL;
-
 	errno_t error;
 
 	error = fopen_s(&file, file_name, mode);

@@ -5,15 +5,11 @@
 #include <string.h>
 
 #define SPACE ' '
-
 #define NULL_CHARACTER '\0'
-
-#define THREE_SPACES 3
-
+#define NEWLINE '\n'
+#define FIRST_ELEMENT 0
 #define SIZE_OF_ALPHABET 82
-
 #define MAX_SIZE_OF_ENCRYPTED_STRING 8
-
 #define SIZE_OF_STRING 1024
 
 typedef struct morse_code {
@@ -23,15 +19,18 @@ typedef struct morse_code {
 
 morse_code alphabet[];
 
-void morse_encrypt();
+typedef enum CYCLE {
+	BREAK_CYCLE,
+	CONTINUE_CYCLE
+} CYCLE;
 
-void morse_decrypt();
+void morse_encrypt_user_string();
+
+void morse_decrypt_user_string();
 
 void print_file(const char* file_name);
 
-char* read_file(const char* file_name);
-
-void check_for_three_spaces(const char* string, int* index);
+void space_or_newline_check(FILE* file, char space_or_newline);
 
 void morse_encrypt_file();
 

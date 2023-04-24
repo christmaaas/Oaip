@@ -3,14 +3,13 @@
 #include "resources.h"
 
 char* log_type[] = {
-	"app",
-	"error",
-	"morse"
+	"APP",
+	"WARNING",
+	"ERROR"
 };
 
 void push_log(const char* log_variety, const char* log_info, const char* file_mode) {
 	FILE* logbook = file_open("logbook.txt", file_mode);
-	
 	time_t current_time = time(NULL);
 	struct tm time_info;
 

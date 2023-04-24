@@ -8,7 +8,9 @@ int choice_menu() {
 
 	while (scanf_s("%d", &choice) == 0 || choice < 1 || choice > 5 || getchar() != '\n') {
 		printf("\nWRONG INPUT: You need to pick 1 - 5: ");
-		push_log(log_type[ERROR], "Programm error: wrong input", "a");
+		
+		push_log(log_type[WARNING], "Programm warning: wrong input", "a");
+		
 		rewind(stdin);
 	}
 
@@ -37,24 +39,24 @@ void menu() {
 		choice = choice_menu();
 
 		switch (choice) {
-		case ENCRYPT_STRING:
-			morse_encrypt();
-			break;
-		case DECRYPT_STRING:
-			morse_decrypt();
-			break;
-		case ENCRYPT_FILE:
-			morse_encrypt_file();
-			break;
-		case DECRYPT_FILE:
-			morse_decrypt_file();
-			break;
-		case EXIT:
-			push_log(log_type[APPLICATION], "Programm ends.", "a");
-			return;
-		default:
-			push_log(log_type[ERROR], "Programm error: code -2", "a");
-			exit(PROGRAMM_ERROR);
+			case ENCRYPT_STRING:
+				morse_encrypt_user_string();
+				break;
+			case DECRYPT_STRING:
+				morse_decrypt_user_string();
+				break;
+			case ENCRYPT_FILE:
+				morse_encrypt_file();
+				break;
+			case DECRYPT_FILE:
+				morse_decrypt_file();
+				break;
+			case EXIT:
+				push_log(log_type[APPLICATION], "Programm ends.", "a");
+				return;
+			default:
+				push_log(log_type[ERROR], "Programm error: code -2", "a");
+				exit(PROGRAMM_ERROR);
 		}
 	} while (choice != EXIT);
 }

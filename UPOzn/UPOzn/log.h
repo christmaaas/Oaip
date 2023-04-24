@@ -5,8 +5,8 @@
 
 typedef enum LOG_TYPE {
 	APPLICATION,
+	WARNING,
 	ERROR,
-	MORSE
 } LOG_TYPE;
 
 char* log_type[];

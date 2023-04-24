@@ -75,7 +75,7 @@ morse_code alphabet[] = {
 	{".-..-.", '"'},
 	{"...-..-", '$'},
 	{".--.-.", '@'},
-	{"  ", '\n'},
+	{"\n", '\n'},
 	{".----", '1'},
 	{"..---", '2'},
 	{"...--", '3'},
@@ -90,22 +90,18 @@ morse_code alphabet[] = {
 
 char* input_string() {
 	char* string = (char*)calloc(SIZE_OF_STRING, sizeof(char));
-
 	gets_s(string, SIZE_OF_STRING);
-
 	int size = strlen(string);
-
 	string = (char*)realloc(string, size + 1);
-
 	return string;
 }
 
-void morse_encrypt() {
+void morse_encrypt_user_string() {
 	printf("\nText: ");
 
 	char* text_to_encrypt = input_string();
 
-	printf("\nEncrypted text: ");
+	printf("\nEncrypted text: \n");
 
 	for (int i = 0; i < strlen(text_to_encrypt); i++) {
 		for (int j = 0; j < SIZE_OF_ALPHABET; j++) {
@@ -117,7 +113,6 @@ void morse_encrypt() {
 				}
 
 				printf("%s ", alphabet[j].code);
-
 				break;
 			}
 		}
@@ -125,28 +120,26 @@ void morse_encrypt() {
 
 	printf("\n");
 
-	push_log(log_type[MORSE], "User text was encrypted.", "a");
+	push_log(log_type[APPLICATION], "User text was encrypted.", "a");
 
 	free(text_to_encrypt);
 }
 
-void morse_decrypt() {
+void morse_decrypt_user_string() {
 	printf("\nText: ");
 	
 	char* text_to_decrypt = input_string();
-
 	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
 
-	int i = 0, j = 0;
+	int i = 0; 
+	int j = 0;
 
-	printf("\nDecrypted text: ");
+	printf("\nDecrypted text: \n");
 
 	while (text_to_decrypt[i] != NULL_CHARACTER) {
 		j = 0;
-
 		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = text_to_decrypt[i];
-		
 			i++;
 			j++;
 		}
@@ -157,7 +150,7 @@ void morse_decrypt() {
 			if (!strcmp(encrypted_text, alphabet[k].code)) {
 				printf("%c", alphabet[k].symbol);
 
-				encrypted_text[0] = NULL_CHARACTER;
+				encrypted_text[FIRST_ELEMENT] = NULL_CHARACTER;
 
 				break;
 			}
@@ -165,7 +158,6 @@ void morse_decrypt() {
 
 		if (text_to_decrypt[i + 1] == SPACE) {
 			printf("%c", SPACE);
-
 			i++;
 		}
 		else if (text_to_decrypt[i] != NULL_CHARACTER) {
@@ -175,63 +167,28 @@ void morse_decrypt() {
 
 	printf("\n");
 
-	push_log(log_type[MORSE], "User text was decrypted.", "a");
+	push_log(log_type[APPLICATION], "User text was decrypted.", "a");
 
 	free(text_to_decrypt);
 	free(encrypted_text);
 }
 
-char* read_file(const char* file_name) {
-	int count = 0;
-
+void print_file(const char* file_name) {
 	FILE* file = file_open(file_name, "r");
 
-	char* string = (char*)calloc(SIZE_OF_STRING, sizeof(char));
+	printf("\nText:\n");
 
 	char symbol = fgetc(file);
-
 	while (!feof(file)) {
-
-		string[count] = symbol;
-		count++;
-
+		printf("%c", symbol);
 		symbol = fgetc(file);
 	}
 
 	fclose(file);
 	
-	return string;
-}
-
-void print_file(const char* file_name) {
-	FILE* file = file_open(file_name, "r");
-
-	printf("\nText: ");
-
-	char symbol = fgetc(file);
-
-	while (!feof(file)) {
-		printf("%c", symbol);
-
-		symbol = fgetc(file);
-	}
+	push_log(log_type[APPLICATION], "File \"Morse.txt\" was printed.", "a");
 
 	printf("\n");
-
-	fclose(file);
-}
-
-void check_for_three_spaces(const char* string, int* index) {
-	if (string[(*index) + 1] == SPACE && string[(*index) + 2] == SPACE) {
-		printf("%c", alphabet[71].symbol);
-		
-		(*index) += THREE_SPACES;
-	}
-	else if (string[(*index) + 1] == SPACE) {
-		printf("%c", SPACE);
-
-		(*index)++;
-	}
 }
 
 void morse_encrypt_file() {
@@ -239,81 +196,94 @@ void morse_encrypt_file() {
 
 	FILE* file = file_open("Morse.txt", "r");
 
-	printf("\nEncrypted text: ");
+	printf("\nEncrypted text:\n");
 
 	char symbol = fgetc(file);
-
 	while (!feof(file)) {
-
 		for (int i = 0; i < SIZE_OF_ALPHABET; i++) {
 			if (symbol == alphabet[i].symbol) {
-
 				if (symbol == SPACE) {
-					printf("%s", alphabet[i].code);
-					
+					printf("%c", SPACE);
 					break;
 				}
-
+				else if (symbol == NEWLINE) {
+					printf("%c", NEWLINE);
+					break;
+				}
 				printf("%s ", alphabet[i].code);
+				break;
 			}
 		}
 
 		symbol = fgetc(file);
 	}
 
-	printf("\n");
-
 	fclose(file);
 
-	push_log(log_type[MORSE], "File text was encrypted.", "a");
+	push_log(log_type[APPLICATION], "File text was encrypted.", "a");
+
+	printf("\n");
+}
+
+void space_or_newline_check(FILE* file, char space_or_newline) {
+	fpos_t pos = ftell(file);
+
+	if (space_or_newline == NEWLINE) {
+		printf("%c", NEWLINE);
+	}
+	else if ((space_or_newline = fgetc(file)) == SPACE) {
+		printf("%c", SPACE);
+	}
+
+	fsetpos(file, &pos);
 }
 
 void morse_decrypt_file() {
-	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
-	char* text_to_decrypt = (char*)calloc(SIZE_OF_STRING, sizeof(char));
+	char space_or_newline;
+	char* encrypted_text = (char*)malloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
 	
-	int i = 0, j = 0;
-
+	int i = 0; 
+	int cycle = CONTINUE_CYCLE;
+	
 	print_file("Morse.txt");
 
-	text_to_decrypt = read_file("Morse.txt");
-	
-	printf("\nDecrypted text: ");
-	
-	while (text_to_decrypt[i] != NULL_CHARACTER) {
-		j = 0;
+	FILE* file = file_open("Morse.txt", "r");
 
-		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
-			encrypted_text[j] = text_to_decrypt[i];
-			
+	printf("\nEncrypted text: \n");
+
+	while (cycle) {
+		i = 0;
+		encrypted_text[i] = fgetc(file);
+		while (encrypted_text[i] != SPACE && encrypted_text[i] != NEWLINE && !feof(file)) {
 			i++;
-			j++;
-		}
-
-		encrypted_text[j] = NULL_CHARACTER;
-
-		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
-			if (!strcmp(encrypted_text, alphabet[k].code)) {
-				printf("%c", alphabet[k].symbol);
-
-				encrypted_text[0] = NULL_CHARACTER;
-
+			encrypted_text[i] = fgetc(file);
+			if (feof(file)) {
+				cycle = BREAK_CYCLE;
 				break;
 			}
 		}
 		
-		check_for_three_spaces(text_to_decrypt, &i);
-
-		if (text_to_decrypt[i] != NULL_CHARACTER) {
-			i++;
+		space_or_newline = encrypted_text[i];
+		encrypted_text[i] = NULL_CHARACTER;
+		
+		for (int k = 0; k < SIZE_OF_ALPHABET; k++) {
+			if (!strcmp(encrypted_text, alphabet[k].code)) {
+				printf("%c", alphabet[k].symbol);
+				
+				encrypted_text[FIRST_ELEMENT] = NULL_CHARACTER;
+				
+				break;
+			}
 		}
-	} 
-	
+		space_or_newline_check(file, space_or_newline);
+	}
+
+	fclose(file);
+
+	push_log(log_type[APPLICATION], "File text was decrypted.", "a");
+
 	printf("\n");
 	
-	push_log(log_type[MORSE], "File text was decrypted.", "a");
-
 	free(encrypted_text);
-	free(text_to_decrypt);
 }
 
