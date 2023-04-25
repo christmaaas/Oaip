@@ -1,4 +1,17 @@
-[24.04.2023 21:29:12] [APP] Programm runs.
-[24.04.2023 21:29:13] [APP] File "Morse.txt" was printed.
-[24.04.2023 21:29:13] [APP] File text was decrypted.
-[24.04.2023 21:29:22] [APP] Programm ends.
+[25.04.2023 18:55:32] [APP] Programm runs.
+[25.04.2023 18:55:45] [APP] User text was encrypted.
+[25.04.2023 18:55:54] [WARNING] Programm warning: wrong input
+[25.04.2023 18:55:57] [APP] User text was decrypted.
+[25.04.2023 18:56:03] [APP] File "Morse.txt" was printed.
+[25.04.2023 18:56:03] [APP] File text was decrypted.
+[25.04.2023 18:56:06] [APP] File "Morse.txt" was printed.
+[25.04.2023 18:56:06] [APP] File text was decrypted.
+[25.04.2023 18:56:07] [WARNING] Programm warning: wrong input
+[25.04.2023 18:56:50] [APP] User text was encrypted.
+[25.04.2023 18:56:58] [APP] User text was decrypted.
+[25.04.2023 18:57:05] [WARNING] Programm warning: wrong input
+[25.04.2023 18:57:12] [APP] User text was decrypted.
+[25.04.2023 18:57:15] [APP] File "Morse.txt" was printed.
+[25.04.2023 18:57:15] [APP] File text was decrypted.
+[25.04.2023 18:57:36] [WARNING] Programm warning: wrong input
+[25.04.2023 18:57:39] [APP] Programm ends.

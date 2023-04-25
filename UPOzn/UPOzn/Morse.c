@@ -4,32 +4,6 @@
 #include "log.h"
 
 morse_code alphabet[] = {
-	{".-", 'A'},
-	{"-...", 'B'},
-	{"-.-.", 'C'},
-	{"-..", 'D'},
-	{".", 'E'},
-	{"..-.", 'F'},
-	{"--.", 'G'},
-	{"....", 'H'},
-	{"..", 'I'},
-	{".---", 'J'},
-	{"-.-", 'K'},
-	{".-..", 'L'},
-	{"--", 'M'},
-	{"-.", 'N'},
-	{"---", 'O'},
-	{".--.", 'P'},
-	{"--.-", 'Q'},
-	{".-.", 'R'},
-	{"...", 'S'},
-	{"-", 'T'},
-	{"..-", 'U'},
-	{"...-", 'V'},
-	{".--", 'W'},
-	{"-..-", 'X'},
-	{"-.--", 'Y'},
-	{"--..", 'Z'},
 	{".-", 'a'},
 	{"-...", 'b'},
 	{"-.-.", 'c'},
@@ -96,10 +70,27 @@ char* input_string() {
 	return string;
 }
 
+void string_letters_to_lower(char* string)	{
+	int letter_position = FIRST_ELEMENT;
+	while (string[letter_position] != NULL_CHARACTER)	{
+		if (string[letter_position] >= 'A' && string[letter_position] <= 'Z') {
+			string[letter_position] += HIGH_TO_LOWER;
+		}
+		letter_position++;
+	}
+}
+
+void letter_to_lower(char* letter) {
+	if ((*letter) >= 'A' && (*letter) <= 'Z') {
+		(*letter) += HIGH_TO_LOWER;
+	}
+}
+
 void morse_encrypt_user_string() {
 	printf("\nText: ");
 
 	char* text_to_encrypt = input_string();
+	string_letters_to_lower(text_to_encrypt);
 
 	printf("\nEncrypted text: \n");
 
@@ -128,8 +119,8 @@ void morse_encrypt_user_string() {
 void morse_decrypt_user_string() {
 	printf("\nText: ");
 	
-	char* text_to_decrypt = input_string();
 	char* encrypted_text = (char*)calloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
+	char* text_to_decrypt = input_string();
 
 	int i = 0; 
 	int j = 0;
@@ -137,7 +128,8 @@ void morse_decrypt_user_string() {
 	printf("\nDecrypted text: \n");
 
 	while (text_to_decrypt[i] != NULL_CHARACTER) {
-		j = 0;
+		j = FIRST_ELEMENT;
+		
 		while ((text_to_decrypt[i] != SPACE) && (text_to_decrypt[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = text_to_decrypt[i];
 			i++;
@@ -178,10 +170,10 @@ void print_file(const char* file_name) {
 
 	printf("\nText:\n");
 
-	char symbol = fgetc(file);
+	char letter = fgetc(file);
 	while (!feof(file)) {
-		printf("%c", symbol);
-		symbol = fgetc(file);
+		printf("%c", letter);
+		letter = fgetc(file);
 	}
 
 	fclose(file);
@@ -198,15 +190,16 @@ void morse_encrypt_file() {
 
 	printf("\nEncrypted text:\n");
 
-	char symbol = fgetc(file);
+	char letter = fgetc(file);
+	letter_to_lower(&letter);
 	while (!feof(file)) {
 		for (int i = 0; i < SIZE_OF_ALPHABET; i++) {
-			if (symbol == alphabet[i].symbol) {
-				if (symbol == SPACE) {
+			if (letter == alphabet[i].symbol) {
+				if (letter == SPACE) {
 					printf("%c", SPACE);
 					break;
 				}
-				else if (symbol == NEWLINE) {
+				else if (letter == NEWLINE) {
 					printf("%c", NEWLINE);
 					break;
 				}
@@ -214,8 +207,8 @@ void morse_encrypt_file() {
 				break;
 			}
 		}
-
-		symbol = fgetc(file);
+		letter = fgetc(file);
+		letter_to_lower(&letter);
 	}
 
 	fclose(file);

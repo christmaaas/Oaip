@@ -8,7 +8,8 @@
 #define NULL_CHARACTER '\0'
 #define NEWLINE '\n'
 #define FIRST_ELEMENT 0
-#define SIZE_OF_ALPHABET 82
+#define HIGH_TO_LOWER 32
+#define SIZE_OF_ALPHABET 56
 #define MAX_SIZE_OF_ENCRYPTED_STRING 8
 #define SIZE_OF_STRING 1024
 
@@ -23,6 +24,10 @@ typedef enum CYCLE {
 	BREAK_CYCLE,
 	CONTINUE_CYCLE
 } CYCLE;
+
+void string_letters_to_lower(char* string);
+
+void letter_to_lower(char* letter);
 
 void morse_encrypt_user_string();
 
