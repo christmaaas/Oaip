@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define SPACE ' '
 #define NULL_CHARACTER '\0'
@@ -19,11 +20,6 @@ typedef struct morse_code {
 } morse_code;
 
 morse_code alphabet[];
-
-typedef enum CYCLE {
-	BREAK_CYCLE,
-	CONTINUE_CYCLE
-} CYCLE;
 
 void string_letters_to_lower(char* string);
 

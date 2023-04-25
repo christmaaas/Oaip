@@ -70,7 +70,7 @@ char* input_string() {
 	return string;
 }
 
-void string_letters_to_lower(char* string)	{
+void string_letters_to_lower(char* string) {
 	int letter_position = FIRST_ELEMENT;
 	while (string[letter_position] != NULL_CHARACTER)	{
 		if (string[letter_position] >= 'A' && string[letter_position] <= 'Z') {
@@ -236,24 +236,20 @@ void morse_decrypt_file() {
 	char* encrypted_text = (char*)malloc(MAX_SIZE_OF_ENCRYPTED_STRING, sizeof(char));
 	
 	int i = 0; 
-	int cycle = CONTINUE_CYCLE;
 	
 	print_file("Morse.txt");
 
 	FILE* file = file_open("Morse.txt", "r");
 
-	printf("\nEncrypted text: \n");
+	printf("\nDecrypted text: \n");
 
-	while (cycle) {
-		i = 0;
+	while (true) {
+		i = FIRST_ELEMENT;
+		
 		encrypted_text[i] = fgetc(file);
-		while (encrypted_text[i] != SPACE && encrypted_text[i] != NEWLINE && !feof(file)) {
+		while (!feof(file) && encrypted_text[i] != SPACE && encrypted_text[i] != NEWLINE) {
 			i++;
 			encrypted_text[i] = fgetc(file);
-			if (feof(file)) {
-				cycle = BREAK_CYCLE;
-				break;
-			}
 		}
 		
 		space_or_newline = encrypted_text[i];
@@ -268,6 +264,11 @@ void morse_decrypt_file() {
 				break;
 			}
 		}
+		
+		if (feof(file)) {
+			break;
+		}
+		
 		space_or_newline_check(file, space_or_newline);
 	}
 
