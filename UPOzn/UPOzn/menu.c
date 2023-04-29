@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "morse.h"
 #include "log.h"
+#include "resources.h"
 
 int choice_menu() {
 	int choice = 0;
@@ -9,7 +10,7 @@ int choice_menu() {
 	while (scanf_s("%d", &choice) == 0 || choice < 1 || choice > 5 || getchar() != '\n') {
 		printf("\nWRONG INPUT: You need to pick 1 - 5: ");
 		
-		push_log(log_type[WARNING], "Programm warning: wrong input", "a");
+		push_log(log_type[WARNING], "Programm warning: wrong input.", "a");
 		
 		rewind(stdin);
 	}
@@ -40,10 +41,10 @@ void menu() {
 
 		switch (choice) {
 			case ENCRYPT_STRING:
-				morse_encrypt_user_string();
+				morse_encrypt_string();
 				break;
 			case DECRYPT_STRING:
-				morse_decrypt_user_string();
+				morse_decrypt_string();
 				break;
 			case ENCRYPT_FILE:
 				morse_encrypt_file();

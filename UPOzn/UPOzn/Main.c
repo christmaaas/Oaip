@@ -5,8 +5,6 @@
 
 int main() {
 	printf("----- MORSE-CODER -----\n");
-
 	menu();
-
 	return 0;
 }

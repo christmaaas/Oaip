@@ -18,12 +18,12 @@
     <ClCompile Include="main.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="hashmap.c">
+    <ClCompile Include="hashtable.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hashmap.h">
+    <ClInclude Include="hashtable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

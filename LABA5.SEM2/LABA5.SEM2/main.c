@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-#include "hashmap.h"
+#include "hashtable.h"
 
 int main() {
 

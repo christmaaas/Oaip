@@ -11,8 +11,9 @@
 #define FIRST_ELEMENT 0
 #define HIGH_TO_LOWER 32
 #define SIZE_OF_ALPHABET 56
+#define SIZE_OF_LETTER_AND_NULL_CHARACTER 2
 #define MAX_SIZE_OF_ENCRYPTED_STRING 8
-#define SIZE_OF_STRING 1024
+#define SPACE_INDEX 26
 
 typedef struct morse_code {
 	char* code;
@@ -21,17 +22,25 @@ typedef struct morse_code {
 
 morse_code alphabet[];
 
-void string_letters_to_lower(char* string);
+char* string_encryptation(const char* string);
+
+char* string_decryptation(const char* string);
+
+char* file_encryption(const char* file_name);
+
+char* file_decryption(const char* file_name);
+
+void string_letters_to_lower(char** string);
 
 void letter_to_lower(char* letter);
 
-void morse_encrypt_user_string();
+void morse_encrypt_string();
 
-void morse_decrypt_user_string();
+void morse_decrypt_string();
 
 void print_file(const char* file_name);
 
-void space_or_newline_check(FILE* file, char space_or_newline);
+void space_or_newline_check(FILE* active_file, FILE* destination_file, char space_or_newline);
 
 void morse_encrypt_file();
 
