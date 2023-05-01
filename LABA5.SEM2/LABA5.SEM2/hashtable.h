@@ -12,6 +12,11 @@ typedef struct hashtable_object {
 	char* value;
 } hashtable_object;
 
+typedef struct list {
+	hashtable_object* object;
+	struct list* next;
+} list;
+
 typedef struct hashtable {
 	hashtable_object** objects;
 	list** chains;
@@ -19,10 +24,11 @@ typedef struct hashtable {
 	int count;
 } hashtable;
 
-typedef struct list {
-	hashtable_object* object;
-	list* next;
-} list;
+list* create_list();
+
+list* insert_list(list* head, hashtable_object* object);
+
+list* create_chains(hashtable* table);
 
 hashtable_object* create_object(char* key, char* value);
 
@@ -44,15 +50,11 @@ void print_hashtable(hashtable* table);
 
 char* hashtable_search(hashtable* table, char* key);
 
-list* create_list();
-
-list* insert_list(list* head, hashtable_object* object);
-
 void free_list(list* head);
 
-list* create_chains(hashtable* table);
-
 void free_chains(hashtable* table);
+
+void hashtable_delete(hashtable* table, char* key);
 
 
 

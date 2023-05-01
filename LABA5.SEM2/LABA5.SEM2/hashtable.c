@@ -75,6 +75,7 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 		while (current != NULL) {
 			if (!strcmp(current->object->key, object->key)) {
 				free_object(current->object);
+				
 				current->object = object;
 
 				return;
@@ -151,10 +152,27 @@ void print_search_resault(hashtable* table, char* key) {
 }
 
 void print_hashtable(hashtable* table) {
+	printf("\n-------------------\n");
+	
 	for (int i = 0; i < table->size; i++) {
-		if (table->objects[i] != NULL)
-			printf("Index:%d, Key:%s, Value:%s\n", i, table->objects[i]->key, table->objects[i]->value);
+		if (table->objects[i] != NULL) {
+			printf("Index: %d, Key: %s, Value: %s", i, table->objects[i]->key, table->objects[i]->value);
+			
+			if (table->chains[i] != NULL) {
+				printf(" => Chains => ");
+				
+				list* head = table->chains[i];
+				
+				while (head != NULL) {
+					printf("Key: %s, Value: %s", head->object->key, head->object->value);
+					head = head->next;
+				}
+			}
+			printf("\n");
+		}
+	
 	}
+	printf("\n-------------------\n");
 }
 
 list* create_list() {
@@ -175,10 +193,12 @@ list* insert_list(list* head, hashtable_object* object) {
 	}
 	else {
 		list* temp = head;
+		
 		while (temp->next != NULL)
 			temp = temp->next;
 
 		list* node = create_list();
+		
 		node->object = object;
 		node->next = NULL;
 		temp->next = node;
@@ -222,3 +242,70 @@ void free_chains(hashtable* table) {
 	free(chains);
 }
 
+void hashtable_delete(hashtable* table, char* key) {
+	int index = hash_function(key);
+
+	hashtable_object* object = table->objects[index];
+
+	list* head = table->chains[index];
+
+	if (object == NULL) {
+		return;
+	}
+	else {
+		if (!strcmp(object->key, key) && head == NULL) {
+			
+			table->objects[index] = NULL;
+			
+			free_object(object);
+			
+			table->count--;
+
+			return;
+		}
+		else if (head != NULL) {
+			if (!strcmp(object->key, key)) {
+				free_object(object);
+				
+				list* node = head;
+				head = head->next;
+				node->next = NULL;
+				
+				table->objects[index] = create_object(node->object->key, node->object->value);
+				
+				free_list(node);
+				
+				table->chains[index] = head;
+
+				return;
+			}
+			
+			list* current = head;
+			list* prev = NULL;
+		
+			while (current != NULL) {
+				if (!strcmp(current->object->key, key)) {
+					if (prev == NULL) {
+						table->chains[index] = head->next;
+						current->next = NULL;
+						
+						free_list(current);
+
+						return;
+					}
+					else {
+						prev->next = current->next;
+						current->next = NULL;
+						
+						free_list(current);
+
+						return;
+					}
+				}
+				
+				prev = current;
+				current = current->next;
+			}
+		}
+	}
+}
