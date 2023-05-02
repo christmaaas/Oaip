@@ -4,12 +4,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE_OF_HASHTABLE 30
+#define SIZE_OF_HASHTABLE 5
 #define EMPTY_TABLE 0
 
-typedef struct hashtable_object {
+typedef struct node node;
+
+typedef struct hashtable_object
+{
 	char* key;
-	char* value;
+	node* head;
 } hashtable_object;
 
 typedef struct list {
@@ -30,7 +33,7 @@ list* insert_list(list* head, hashtable_object* object);
 
 list* create_chains(hashtable* table);
 
-hashtable_object* create_object(char* key, char* value);
+hashtable_object* create_object(char* key, node* head);
 
 hashtable* create_table(int size_of_table);
 
@@ -42,11 +45,7 @@ void free_hashtable(hashtable* table);
 
 void collision_prevention(hashtable* table, int index, hashtable_object* object);
 
-void hashtable_insert(hashtable* table, char* key, char* value);
-
-void print_search_resault(hashtable* table, char* key);
-
-void print_hashtable(hashtable* table);
+void hashtable_insert(hashtable* table, char* key, node* head);
 
 char* hashtable_search(hashtable* table, char* key);
 

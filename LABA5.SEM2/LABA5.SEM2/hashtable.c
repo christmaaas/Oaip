@@ -1,5 +1,6 @@
 
 #include "hashtable.h"
+#include "cache.h"
 
 int hash_function(char* key) {
 	int accumulator = 0;
@@ -10,14 +11,11 @@ int hash_function(char* key) {
 	return accumulator % SIZE_OF_HASHTABLE;
 }
 
-hashtable_object* create_object(char* key, char* value) {
+hashtable_object* create_object(char* key, node* head) {
 	hashtable_object* object = (hashtable_object*)malloc(sizeof(hashtable_object));
 	
-	object->key = (char*)malloc(strlen(key) + 1);
-	object->value = (char*)malloc(strlen(value) + 1);
-
-	strcpy_s(object->key, (strlen(key) + 1), key);
-	strcpy_s(object->value, (strlen(value) + 1), value);
+	object->head = head;
+	object->key = key;
 
 	return object;
 }
@@ -38,8 +36,8 @@ hashtable* create_table(int size_of_table) {
 }
 
 void free_object(hashtable_object* object) {
+	free(object->head->value); //добавил free для валуева, потому что на выходе в двусвяз. списке валуевы были НЕ пустые либо во всех либо в некоторых
 	free(object->key);
-	free(object->value);
 	free(object);
 }
 
@@ -49,13 +47,11 @@ void free_hashtable(hashtable* table) {
 	for (int i = 0; i < table->size; i++) {
 		object = table->objects[i];
 		
-		if (object != NULL) 
-			free(object);
+		if (object != NULL)
+			free_object(object);
 	}
-	
 	free_chains(table);
-	free(table->objects);
-	free(table);
+	free(table); //добавил тут такое, правда хз надо ли
 }
 
 void collision_prevention(hashtable* table, int index, hashtable_object* object) {
@@ -74,9 +70,9 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 
 		while (current != NULL) {
 			if (!strcmp(current->object->key, object->key)) {
-				free_object(current->object);
-				
-				current->object = object;
+				free(current->object->head->value);
+
+				current->object->head->value = object->head->value;
 
 				return;
 			}
@@ -89,8 +85,8 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 	}
 }
 
-void hashtable_insert(hashtable* table, char* key, char* value) {
-	hashtable_object* object = create_object(key, value);
+void hashtable_insert(hashtable* table, char* key, node* head) {
+	hashtable_object* object = create_object(key, head);
 
 	int index = hash_function(key);
 
@@ -99,6 +95,7 @@ void hashtable_insert(hashtable* table, char* key, char* value) {
 	if (current_object == NULL) {
 		if (table->count == table->size) {
 			printf("Insert error: hashtable is full.");
+			free_node(object->head);
 			free_object(object);
 			
 			return;
@@ -109,8 +106,10 @@ void hashtable_insert(hashtable* table, char* key, char* value) {
 	}
 	else {
 		if (!strcmp(current_object->key, key)) {
-			strcpy_s(table->objects[index]->value, strlen(table->objects[index]->value), value);
-			free_object(object);
+			
+			free(current_object->head->value);
+			
+			current_object->head->value = head->value;
 
 			return;
 		}
@@ -129,8 +128,8 @@ char* hashtable_search(hashtable* table, char* key) {
 	list* head = table->chains[index];
 
 	while (current_object != NULL) {
-		if (!strcmp(current_object->key, key))
-			return current_object->value;
+		if (!strcmp(current_object->key, key)) 
+			return current_object->head->value;
 		if (head == NULL)
 			return NULL;
 		
@@ -139,40 +138,6 @@ char* hashtable_search(hashtable* table, char* key) {
 	}
 	
 	return NULL;
-}
-
-void print_search_resault(hashtable* table, char* key) {
-	char* value = hashtable_search(table, key);
-
-	if (value != NULL)
-		printf("Key: %s, Value: %s\n", key, value);
-	else {
-		printf("Key: %s does not exist\n", key);
-	}
-}
-
-void print_hashtable(hashtable* table) {
-	printf("\n-------------------\n");
-	
-	for (int i = 0; i < table->size; i++) {
-		if (table->objects[i] != NULL) {
-			printf("Index: %d, Key: %s, Value: %s", i, table->objects[i]->key, table->objects[i]->value);
-			
-			if (table->chains[i] != NULL) {
-				printf(" => Chains => ");
-				
-				list* head = table->chains[i];
-				
-				while (head != NULL) {
-					printf("Key: %s, Value: %s", head->object->key, head->object->value);
-					head = head->next;
-				}
-			}
-			printf("\n");
-		}
-	
-	}
-	printf("\n-------------------\n");
 }
 
 list* create_list() {
@@ -208,7 +173,7 @@ list* insert_list(list* head, hashtable_object* object) {
 }
 
 void free_list(list* head) {
-	list* temp = NULL;;
+	list* temp = NULL;
 	
 	if (head == NULL)
 		return;
@@ -217,7 +182,7 @@ void free_list(list* head) {
 		temp = head;
 		head = head->next;
 		free(temp->object->key);
-		free(temp->object->value);
+		free(temp->object->head->value); //было free(temp->object->head) но я сделал для валуева потому что тоже некоторые не очищались
 		free(temp->object);
 		free(temp);
 	}
@@ -237,7 +202,7 @@ void free_chains(hashtable* table) {
 	list** chains = table->chains;
 
 	for (int i = 0; i < table->size; i++) 
-		free(chains[i]);
+		free_list(chains[i]);
 	
 	free(chains);
 }
@@ -257,23 +222,18 @@ void hashtable_delete(hashtable* table, char* key) {
 			
 			table->objects[index] = NULL;
 			
-			free_object(object);
-			
 			table->count--;
 
 			return;
 		}
 		else if (head != NULL) {
 			if (!strcmp(object->key, key)) {
-				free_object(object);
-				
+		
 				list* node = head;
 				head = head->next;
 				node->next = NULL;
 				
-				table->objects[index] = create_object(node->object->key, node->object->value);
-				
-				free_list(node);
+				table->objects[index] = create_object(node->object->key, node->object->head);
 				
 				table->chains[index] = head;
 
@@ -288,16 +248,12 @@ void hashtable_delete(hashtable* table, char* key) {
 					if (prev == NULL) {
 						table->chains[index] = head->next;
 						current->next = NULL;
-						
-						free_list(current);
 
 						return;
 					}
 					else {
 						prev->next = current->next;
 						current->next = NULL;
-						
-						free_list(current);
 
 						return;
 					}
