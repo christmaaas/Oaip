@@ -1,0 +1,27 @@
+﻿  lru.c
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(45,33): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(82,4): warning C4033: "cache_search" должен возвращать значение
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,18): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,50): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,47): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,79): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(102,76): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,18): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,50): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,47): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,79): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(103,76): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,21): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,18): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,50): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,47): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,80): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char"
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(104,76): warning C4024: atoi: различные типы для формального и фактического параметров 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(123,20): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(123,20): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(124,24): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(124,24): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\Desktop\LABA5.SEM2\LABA5.SEM2\lru.c(96): warning C4715: cache_search: значение возвращается не при всех путях выполнения
+  LABA5.SEM2.vcxproj -> C:\Users\Глеб\Desktop\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe
