@@ -1,7 +1,0 @@
-lms.bsuir.by IN A 192.168.251.23
-lms2.bsuir.by IN CNAME lms.bsuir.by
-burmalda.bsuir.by IN A 150.130.220.10
-aboba.bsuir.by IN CNAME burmalda.bsuir.by
-artem.bsuir.by IN A 150.130.220.10
-maks.bsuir.by IN CNAME artem.bsuir.by
-tolik.bsuir.by IN A 150.130.220.10
