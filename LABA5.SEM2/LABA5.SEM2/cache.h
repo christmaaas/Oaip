@@ -20,14 +20,13 @@ typedef struct lru_cache {
 	int count;
 } lru_cache;
 
-
-void delete_tail(node** head, node** tail);
+lru_cache* create_cache(int size_of_cache);
 
 node* create_node(char* key, char* value);
 
-void add_to_head(node** head, node** tail, char* key, char* value);
+void delete_tail(node** head, node** tail);
 
-lru_cache* create_cache(int size_of_cache);
+void add_to_head(node** head, node** tail, char* key, char* value);
 
 void cache_insert(lru_cache* cache, char* key, char* value);
 

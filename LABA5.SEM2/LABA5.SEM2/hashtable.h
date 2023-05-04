@@ -8,10 +8,9 @@
 
 typedef struct node node;
 
-typedef struct hashtable_object
-{
+typedef struct hashtable_object {
 	char* key;
-	node* head;
+	node* node;
 } hashtable_object;
 
 typedef struct list {
@@ -32,7 +31,7 @@ list* insert_list(list* head, hashtable_object* object);
 
 list* create_chains(hashtable* table);
 
-hashtable_object* create_object(char* key, node* head);
+hashtable_object* create_object(char* key, node* node);
 
 hashtable* create_table(int size_of_table);
 
@@ -44,7 +43,7 @@ void free_hashtable(hashtable* table);
 
 void collision_prevention(hashtable* table, int index, hashtable_object* object);
 
-void hashtable_insert(hashtable* table, char* key, node* head);
+void hashtable_insert(hashtable* table, char* key, node* node);
 
 char* hashtable_search(hashtable* table, char* key);
 

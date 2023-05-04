@@ -4,8 +4,6 @@
 
 void free_cache(lru_cache* cache) { 
 	free_hashtable(cache->table);
-	free(cache->head);
-	free(cache->tail);
 	free(cache);
 }
 
@@ -65,7 +63,10 @@ void cache_insert(lru_cache* cache, char* key, char* value) {
 		hashtable_delete(cache->table, cache->tail->key);
 		delete_tail(&cache->head, &cache->tail);
 	}
+	
 	add_to_head(&cache->head, &cache->tail, key, value);
+	
 	hashtable_insert(cache->table, key, cache->head);
+	
 	cache->count++;
 }

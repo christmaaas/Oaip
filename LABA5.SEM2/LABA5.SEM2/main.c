@@ -5,30 +5,32 @@
 
 #include "hashtable.h"
 #include "cache.h"
-#include"lru.h"
-#include"resources.h"
-
-#define EXIT '0'
+#include "lru.h"
+#include "resources.h"
 
 int main() {
 	lru_cache* cache = create_cache(SIZE_OF_CACHE);
 	
-	char* cache_search_result = NULL;
-	char* domen_name = NULL;
-	
-	while (true) {
-		printf("\nInput a domain of enter 0 to exit: ");
-			
-		domen_name = input_str();ç
-			
-		if (domen_name[0] == EXIT)
-			break;
-			
-		cache_search_result = cache_search(cache, domen_name, 0);
-			
-		if (cache_search_result != NULL)
-			printf("Searched IP-adress: %s\n", cache_search_result);
-	}
+	int choice = 0;
+
+	do {
+		menu_info();
+
+		choice = choice_menu();
+
+		switch (choice) {
+			case SEARCH_BY_DOMEN:
+				ip_search_by_domain(cache);
+				break;
+			case SEARCH_BY_IP:
+				//domain_search_by_ip;
+				break;
+			case EXIT:
+				break;
+			default:
+				exit(PROGRAMM_ERROR);
+		}
+	} while (choice != EXIT);
 
 	free_cache(cache);
 

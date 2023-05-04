@@ -1,2 +1,18 @@
-﻿  main.c
-  LABA5.SEM2.vcxproj -> E:\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe
+﻿  cache.c
+  hashtable.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\hashtable.c(28,81): warning C4133: =: несовместимые типы - из "hashtable **" в "hashtable_object **"
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\hashtable.c(33,38): warning C4047: =: "list **" отличается по уровням косвенного обращения от "list *"
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\hashtable.c(191,15): warning C4047: return: "list *" отличается по уровням косвенного обращения от "list **"
+  lru.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(39,40): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(90,4): warning C4033: "cache_search" должен возвращать значение
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(119,27): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(119,27): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(120,31): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(120,31): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+  main.c
+  resources.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\resources.c(9,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(108): warning C4715: cache_search: значение возвращается не при всех путях выполнения
+  LABA5.SEM2.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe

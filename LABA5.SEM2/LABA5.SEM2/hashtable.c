@@ -11,10 +11,10 @@ int hash_function(char* key) {
 	return accumulator % SIZE_OF_CACHE;
 }
 
-hashtable_object* create_object(char* key, node* head) {
+hashtable_object* create_object(char* key, node* node) {
 	hashtable_object* object = (hashtable_object*)malloc(sizeof(hashtable_object));
 	
-	object->head = head;
+	object->node = node;
 	object->key = key;
 
 	return object;
@@ -36,7 +36,6 @@ hashtable* create_table(int size_of_table) {
 }
 
 void free_object(hashtable_object* object) {
-	free(object->head->value);
 	free(object->key);
 	free(object);
 }
@@ -71,9 +70,9 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 
 		while (current != NULL) {
 			if (!strcmp(current->object->key, object->key)) {
-				free(current->object->head->value);
+				free(current->object->node->value);
 
-				current->object->head->value = object->head->value;
+				current->object->node->value = object->node->value;
 
 				return;
 			}
@@ -86,8 +85,8 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 	}
 }
 
-void hashtable_insert(hashtable* table, char* key, node* head) {
-	hashtable_object* object = create_object(key, head);
+void hashtable_insert(hashtable* table, char* key, node* node) {
+	hashtable_object* object = create_object(key, node);
 
 	int index = hash_function(key);
 
@@ -100,9 +99,9 @@ void hashtable_insert(hashtable* table, char* key, node* head) {
 	else {
 		if (!strcmp(current_object->key, key)) {
 			
-			free(current_object->head->value);
+			free(current_object->node->value);
 			
-			current_object->head->value = head->value;
+			current_object->node->value = node->value;
 
 			return;
 		}
@@ -122,7 +121,7 @@ char* hashtable_search(hashtable* table, char* key) {
 
 	while (current_object != NULL) {
 		if (!strcmp(current_object->key, key)) 
-			return current_object->head->value;
+			return current_object->node->value;
 		if (head == NULL)
 			return NULL;
 		
@@ -174,8 +173,9 @@ void free_list(list* head) {
 	while (head != NULL) {
 		temp = head;
 		head = head->next;
+		
 		free(temp->object->key);
-		free(temp->object->head->value);
+		free(temp->object->node);
 		free(temp->object);
 		free(temp);
 	}
@@ -226,7 +226,7 @@ void hashtable_delete(hashtable* table, char* key) {
 				head = head->next;
 				node->next = NULL;
 				
-				table->objects[index] = create_object(node->object->key, node->object->head);
+				table->objects[index] = create_object(node->object->key, node->object->node);
 				
 				table->chains[index] = head;
 
