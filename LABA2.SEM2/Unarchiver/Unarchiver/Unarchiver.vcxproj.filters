@@ -15,18 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
-      <Filter>Файлы ресурсов</Filter>
+    <ClCompile Include="decompress.c">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Func.c">
-      <Filter>Файлы ресурсов</Filter>
+    <ClCompile Include="main.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="resources.c">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Struct.h">
+    <ClInclude Include="struct.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Func.h">
+    <ClInclude Include="decompress.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="resources.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
