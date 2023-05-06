@@ -1,1 +1,20 @@
-﻿  Zipper.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\x64\Debug\Zipper.exe
+﻿  compress.c
+  main.c
+  recources.c
+  words.c
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(79,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(127,19): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(133,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(136,19): warning C4133: =: несовместимые типы - из "char *" в "stack *"
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(140,24): warning C4090: функция: разные квалификаторы "const"
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(140,26): warning C4267: функция: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(143,24): warning C4090: функция: разные квалификаторы "const"
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(260,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(263,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(264,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(270,27): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(278,32): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\Zipper\words.c(242,26): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  LINK : не найден или не выполнена сборка C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\x64\Debug\Zipper.exe при последней инкрементной компоновке; выполняется полная компоновка
+  Zipper.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA2.SEM2\Ziper\x64\Debug\Zipper.exe

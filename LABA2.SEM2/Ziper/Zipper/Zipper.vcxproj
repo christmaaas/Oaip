@@ -127,14 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Func.c" />
-    <ClCompile Include="Main.c" />
-    <ClCompile Include="Stack.c" />
+    <ClCompile Include="compress.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="recources.c" />
+    <ClCompile Include="stack.c" />
+    <ClCompile Include="words.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Func.h" />
-    <ClInclude Include="Stack.h" />
-    <ClInclude Include="Struct.h" />
+    <ClInclude Include="compress.h" />
+    <ClInclude Include="recources.h" />
+    <ClInclude Include="stack.h" />
+    <ClInclude Include="struct.h" />
+    <ClInclude Include="words.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
