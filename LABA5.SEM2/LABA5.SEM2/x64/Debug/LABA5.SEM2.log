@@ -10,9 +10,10 @@ C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(119,
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(119,27): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(120,31): warning C4474: "printf" : для строки формата передано слишком много аргументов
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(120,31): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(192,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   main.c
   resources.c
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\resources.c(9,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\resources.c(8,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   Создание кода...
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(108): warning C4715: cache_search: значение возвращается не при всех путях выполнения
-  LABA5.SEM2.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe
+  LABA5.SEM2.vcxproj -> C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe

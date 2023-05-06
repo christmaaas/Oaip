@@ -4,7 +4,7 @@
 #include "hashtable.h"
 #include "resources.h"
 
-int database_search(char* key,char** domain, char** ip) {
+int database_search(const char* key, char** domain, char** ip) {
 	char* string = (char*)malloc(MAX_SIZE_OF_STRING);
 	char* domain_name = (char*)malloc(MAX_SIZE_OF_STRING);
 	char* ip_adress = (char*)malloc(MAX_SIZE_OF_STRING);
@@ -17,9 +17,9 @@ int database_search(char* key,char** domain, char** ip) {
 	FILE* file = file_open("database.txt", "r");
 
 	while (!feof(file)) {
-		
+
 		fgets(string, MAX_SIZE_OF_STRING, file);
-		
+
 		index = find_pattern(string, "IN A");
 		indent = IN_A;
 		domain_type = TYPE_A;
@@ -34,10 +34,10 @@ int database_search(char* key,char** domain, char** ip) {
 		fgets(domain_name, index - indent, file);
 
 		fseek(file, index + indent_accumulator + INDENT_FOR_SPACE, SEEK_SET);
-		fgets(ip_adress, MAX_SIZE_OF_STRING, file);       
+		fgets(ip_adress, MAX_SIZE_OF_STRING, file);
 
 		indent_accumulator += strlen(string) + INDENT_FOR_NEWLINE;
-	
+
 		if (!strcmp(key, domain_name)) {
 			(*domain) = domain_name;
 			(*ip) = ip_adress;
@@ -47,17 +47,17 @@ int database_search(char* key,char** domain, char** ip) {
 
 			return domain_type;
 		}
-	
+
 	}
 
 	free(string);
 
 	fclose(file);
-	
+
 	return NOT_FOUNDED;
 }
 
-char* cache_search(lru_cache* cache, char* key, int flag) {
+char* cache_search(lru_cache* cache, const char* key, int flag) {
 	char* check = NULL;
 	char* cache_search_result = NULL;
 	char* hashtable_search_result = hashtable_search(cache->table, key);
@@ -77,9 +77,9 @@ char* cache_search(lru_cache* cache, char* key, int flag) {
 			printf("\nMISS\n");
 
 		char* domain = NULL;
-		char* ip_adress =  NULL;
+		char* ip_adress = NULL;
 
-		int database_search_result =  database_search(key, &domain, &ip_adress);
+		int database_search_result = database_search(key, &domain, &ip_adress);
 
 		if (database_search_result == NOT_FOUNDED) {
 			printf("\nError. No such domen on dns server\n");
@@ -87,11 +87,11 @@ char* cache_search(lru_cache* cache, char* key, int flag) {
 
 			add_database(key);
 
-			return; 
+			return;
 		}
 		else if (database_search_result == TYPE_CNAME) {
 			flag = TYPE_CNAME_SEARCH;
-			
+
 			if ((cache_search_result = cache_search(cache, ip_adress, flag)) != NULL) {
 				cache_insert(cache, key, cache_search_result);
 				return cache_search_result;
@@ -99,7 +99,7 @@ char* cache_search(lru_cache* cache, char* key, int flag) {
 		}
 		else if (flag == TYPE_CNAME_SEARCH) {
 			return ip_adress;
-		}		
+		}
 		else {
 			cache_insert(cache, domain, ip_adress);
 			return ip_adress;
@@ -107,20 +107,20 @@ char* cache_search(lru_cache* cache, char* key, int flag) {
 	}
 }
 
-void add_database(char* domen) {
+void add_database(const char* domen) {
 	FILE* database = file_open("database.txt", "r+");
 	char* new_info = NULL;
 
 	fseek(database, 0, SEEK_END);
 	fprintf(database, "%s", domen);
-	
+
 	printf("\nPick a type of \"%s\" :\n", domen);
 	printf("--------------\n");
 	printf("1 - \"IN A\"\n", domen);
 	printf("2 - \"IN CNAME\"\n", domen);
 	printf("--------------\n");
 	printf("Your choice: ");
-	
+
 	int choice = choice_domen_type();
 
 	if (choice == TYPE_A) {
@@ -155,7 +155,7 @@ void add_database(char* domen) {
 void ip_search_by_domain(lru_cache* cache) {
 	char* cache_search_result = NULL;
 	char* domain_name = NULL;
-	
+
 	printf("\nInput a domain: ");
 
 	domain_name = input_str();
@@ -164,4 +164,63 @@ void ip_search_by_domain(lru_cache* cache) {
 
 	if (cache_search_result != NULL)
 		printf("Searched IP-adress: %s\n", cache_search_result);
+}
+
+void domain_search_by_ip() {
+	char* buffer = (char*)malloc(MAX_SIZE_OF_STRING);
+	char* domain = (char*)calloc(MAX_SIZE_OF_STRING, 1);
+	char* ip_adress = (char*)calloc(MAX_SIZE_OF_STRING, 1);
+	char* searche = (char*)calloc(MAX_SIZE_OF_STRING, 1);
+
+	int flag = 0;
+
+	printf("\nEnter IP-adress: ");
+
+	searche = input_str();
+	if (valid_ip_check(searche) != RIGHT_IP_ADRESS) {
+		printf("\nWrong IP-adress\n");
+
+		return;
+	}
+
+	printf("\n--- DOMENS ---\n");
+
+	FILE* database = file_open("database.txt", "r");
+
+	while (!feof(database)) {
+		fgets(buffer, MAX_SIZE_OF_STRING, database);
+		int len = strcspn(buffer, "\n");
+
+		buffer[len] = NULL_TERMINATOR;
+
+		if (sscanf(buffer, "%s IN A %s", domain, ip_adress) == 2 && flag == ORIGINAL_DOMAIN_NOT_FOUNDED) {
+			if (!strcmp(searche, ip_adress)) {
+				printf("%s\n", domain);
+
+				flag = ORIGINAL_DOMAIN_FOUNDED;
+
+				searche = realloc(searche, strlen(domain) + 1);
+				strcpy_s(searche, strlen(domain) + 1, domain);
+			}
+		}
+		if (sscanf(buffer, "%s IN CNAME %s", domain, ip_adress) == 2 && flag == ORIGINAL_DOMAIN_FOUNDED) {
+			if (!strcmp(searche, ip_adress))
+				printf("%s\n", domain);
+
+		}
+	}
+
+	free(buffer);
+	free(domain);
+	free(ip_adress);
+	free(searche);
+
+	if (flag == ORIGINAL_DOMAIN_NOT_FOUNDED) {
+		printf("\nNo one domain is dounded\n");
+
+		return;
+	}
+	else {
+		printf("-----------------\n");
+	}
 }

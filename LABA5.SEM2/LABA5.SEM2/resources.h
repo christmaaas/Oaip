@@ -14,6 +14,8 @@
 #define MAX_IP_COMPONENTS 4
 #define MAX_IP_VALUE 255
 
+#pragma warning(disable: 4996)
+
 typedef enum menu {
 	SEARCH_BY_DOMEN = 1,
 	SEARCH_BY_IP,
@@ -24,9 +26,9 @@ FILE* file_open(const char* file_name, const char* mode);
 
 char* input_str();
 
-int find_pattern(char* str, char* ptr);
+int find_pattern(const char* str, const char* ptr);
 
-int valid_ip_check(char* str);
+int valid_ip_check(const char* str);
 
 int choice_domen_type();
 

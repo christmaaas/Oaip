@@ -22,12 +22,12 @@ typedef struct lru_cache {
 
 lru_cache* create_cache(int size_of_cache);
 
-node* create_node(char* key, char* value);
+node* create_node(const char* key, const char* value);
 
 void delete_tail(node** head, node** tail);
 
-void add_to_head(node** head, node** tail, char* key, char* value);
+void add_to_head(node** head, node** tail, const char* key, const char* value);
 
-void cache_insert(lru_cache* cache, char* key, char* value);
+void cache_insert(lru_cache* cache, const char* key, const char* value);
 
 void free_cache(lru_cache* cache);
