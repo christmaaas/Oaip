@@ -20,15 +20,72 @@ typedef struct morse_code {
 	char symbol;
 } morse_code;
 
-morse_code alphabet[];
+static morse_code alphabet[] = {
+	{".-", 'a'},
+	{"-...", 'b'},
+	{"-.-.", 'c'},
+	{"-..", 'd'},
+	{".", 'e'},
+	{"..-.", 'f'},
+	{"--.", 'g'},
+	{"....", 'h'},
+	{"..", 'i'},
+	{".---", 'j'},
+	{"-.-", 'k'},
+	{".-..", 'l'},
+	{"--", 'm'},
+	{"-.", 'n'},
+	{"---", 'o'},
+	{".--.", 'p'},
+	{"--.-", 'q'},
+	{".-.", 'r'},
+	{"...", 's'},
+	{"-", 't'},
+	{"..-", 'u'},
+	{"...-", 'v'},
+	{".--", 'w'},
+	{"-..-", 'x'},
+	{"-.--", 'y'},
+	{"--..", 'z'},
+	{" ", ' '},
+	{".-.-.-", '.'},
+	{"--..--", ','},
+	{"-.-.--", '!'},
+	{"..--..", '?'},
+	{".----.", '\''},
+	{"-..-.", '/'},
+	{"-.--.", '('},
+	{"-.--.-", ')'},
+	{".-...", '&'},
+	{"---...", ':'},
+	{"-.-.-.", ';'},
+	{"-...-", '='},
+	{".-.-.", '+'},
+	{"-....-", '-'},
+	{"..--.-", '_'},
+	{".-..-.", '"'},
+	{"...-..-", '$'},
+	{".--.-.", '@'},
+	{"\n", '\n'},
+	{".----", '1'},
+	{"..---", '2'},
+	{"...--", '3'},
+	{"....-", '4'},
+	{".....", '5'},
+	{"-....", '6'},
+	{"--...", '7'},
+	{"---..", '8'},
+	{"----.", '9'},
+	{"-----", '0'}
+};
 
 char* string_encryptation(const char* string);
 
 char* string_decryptation(const char* string);
 
-char* file_encryption(const char* file_name);
+void file_encryption(const char* source_file_name, const char* destination_file_name);
 
-char* file_decryption(const char* file_name);
+void file_decryption(const char* source_file_name, const char* destination_file_name);
 
 void string_letters_to_lower(char** string);
 

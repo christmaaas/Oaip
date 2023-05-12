@@ -9,8 +9,10 @@ typedef enum LOG_TYPE {
 	ERROR,
 } LOG_TYPE;
 
-char* log_type[];
+static char* log_type[] = {
+	"APP",
+	"WARNING",
+	"ERROR"
+};
 
 void push_log(const char* log_variety, const char* log_info, const char* file_mode);
-
-void push_log_for_files(const char* log_variety, const char* file_name, const char* file_mode);

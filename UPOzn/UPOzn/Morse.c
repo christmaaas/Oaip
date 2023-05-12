@@ -1,66 +1,6 @@
-
 #include "morse.h"
 #include "resources.h"
 #include "log.h"
-
-morse_code alphabet[] = {
-	{".-", 'a'},
-	{"-...", 'b'},
-	{"-.-.", 'c'},
-	{"-..", 'd'},
-	{".", 'e'},
-	{"..-.", 'f'},
-	{"--.", 'g'},
-	{"....", 'h'},
-	{"..", 'i'},
-	{".---", 'j'},
-	{"-.-", 'k'},
-	{".-..", 'l'},
-	{"--", 'm'},
-	{"-.", 'n'},
-	{"---", 'o'},
-	{".--.", 'p'},
-	{"--.-", 'q'},
-	{".-.", 'r'},
-	{"...", 's'},
-	{"-", 't'},
-	{"..-", 'u'},
-	{"...-", 'v'},
-	{".--", 'w'},
-	{"-..-", 'x'},
-	{"-.--", 'y'},
-	{"--..", 'z'},
-	{" ", ' '},
-	{".-.-.-", '.'},
-	{"--..--", ','},
-	{"-.-.--", '!'},
-	{"..--..", '?'},
-	{".----.", '\''},
-	{"-..-.", '/'},
-	{"-.--.", '('},
-	{"-.--.-", ')'},
-	{".-...", '&'},
-	{"---...", ':'},
-	{"-.-.-.", ';'},
-	{"-...-", '='},
-	{".-.-.", '+'},
-	{"-....-", '-'},
-	{"..--.-", '_'},
-	{".-..-.", '"'},
-	{"...-..-", '$'},
-	{".--.-.", '@'},
-	{"\n", '\n'},
-	{".----", '1'},
-	{"..---", '2'},
-	{"...--", '3'},
-	{"....-", '4'},
-	{".....", '5'},
-	{"-....", '6'},
-	{"--...", '7'},
-	{"---..", '8'},
-	{"----.", '9'},
-	{"-----", '0'}
-};
 
 void string_letters_to_lower(char** string) {
 	int letter_position = FIRST_ELEMENT;
@@ -199,12 +139,9 @@ void print_file(const char* file_name) {
 	printf("\n");
 }
 
-char* file_encryption(const char* file_name) {
-	printf("\nInput a name of new file(.txt): ");
-	char* new_file_name = input_string();
-
-	FILE* file_to_encrypt = file_open(file_name, "r");
-	FILE* encrypted_file = file_open(new_file_name, "w");
+void file_encryption(const char* source_file_name, const char* destination_file_name) {
+	FILE* file_to_encrypt = file_open(source_file_name, "r");
+	FILE* encrypted_file = file_open(destination_file_name, "w");
 
 	char letter = fgetc(file_to_encrypt);
 	
@@ -232,10 +169,6 @@ char* file_encryption(const char* file_name) {
 
 	fclose(file_to_encrypt);
 	fclose(encrypted_file);
-
-	push_log_for_files(log_type[APPLICATION], new_file_name, "a");
-
-	return new_file_name;
 }
 
 void morse_encrypt_file() {
@@ -243,15 +176,18 @@ void morse_encrypt_file() {
 	
 	print_file("morse.txt");
 
-	char* encrypted_file = file_encryption("morse.txt");
+	printf("\nInput a name of new file(.txt): ");
+	char* new_file_name = input_string();
+
+	file_encryption("morse.txt", new_file_name);
 
 	printf("\nEncrypted text:\n");
 
-	print_file(encrypted_file);
+	print_file(new_file_name);
 
 	push_log(log_type[APPLICATION], "File text was encrypted.", "a");
 
-	free(encrypted_file);
+	free(new_file_name);
 }
 
 void space_or_newline_check(FILE* active_file, FILE* destination_file, char space_or_newline) {
@@ -267,15 +203,12 @@ void space_or_newline_check(FILE* active_file, FILE* destination_file, char spac
 	fsetpos(active_file, &pos);
 }
 
-char* file_decryption(const char* file_name) {
-	printf("\nInput a name of new file(.txt): ");
-	char* new_file_name = input_string();
-	
+void file_decryption(const char* source_file_name, const char* destination_file_name) {
 	char* encrypted_text = (char*)malloc(MAX_SIZE_OF_ENCRYPTED_STRING);
 	char space_or_newline;
 
-	FILE* encrypted_file = file_open(file_name, "r");
-	FILE* decrypted_file = file_open(new_file_name, "w");
+	FILE* encrypted_file = file_open(source_file_name, "r");
+	FILE* decrypted_file = file_open(destination_file_name, "w");
 
 	int i = 0;
 
@@ -311,11 +244,7 @@ char* file_decryption(const char* file_name) {
 	fclose(encrypted_file);
 	fclose(decrypted_file);
 
-	push_log_for_files(log_type[APPLICATION], new_file_name, "a");
-
 	free(encrypted_text);
-
-	return new_file_name;
 }
 
 void morse_decrypt_file() {
@@ -323,14 +252,17 @@ void morse_decrypt_file() {
 
 	print_file("morse.txt");
 
-	char* decrypted_file = file_decryption("morse.txt");
+	printf("\nInput a name of new file(.txt): ");
+	char* new_file_name = input_string();
+
+	file_decryption("morse.txt", new_file_name);
 
 	printf("\nDecrypted text:\n");
 
-	print_file(decrypted_file);
+	print_file(new_file_name);
 
 	push_log(log_type[APPLICATION], "File text was decrypted.", "a");
 
-	free(decrypted_file);
+	free(new_file_name);
 }
 
