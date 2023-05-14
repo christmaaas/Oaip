@@ -45,12 +45,16 @@ int database_search(const char* key, char** domain, char** ip) {
 
 			fclose(file);
 
+			free(string);
+
 			return domain_type;
 		}
 
 	}
 
 	free(string);
+	free(domain_name);
+	free(ip_adress);
 
 	fclose(file);
 
@@ -87,7 +91,7 @@ char* cache_search(lru_cache* cache, const char* key, int flag) {
 
 			add_database(key);
 
-			return;
+			return NULL;
 		}
 		else if (database_search_result == TYPE_CNAME) {
 			flag = TYPE_CNAME_SEARCH;
@@ -179,6 +183,11 @@ void domain_search_by_ip() {
 	searche = input_str();
 	if (valid_ip_check(searche) != RIGHT_IP_ADRESS) {
 		printf("\nWrong IP-adress\n");
+
+		free(buffer);
+		free(domain);
+		free(ip_adress);
+		free(searche);
 
 		return;
 	}
