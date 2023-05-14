@@ -14,3 +14,4 @@ kostya.bsuir.by IN A 190.215.225.25
 teeee.tyr.net IN A 123.123.222.11
 youyou IN CNAME nounou.bsuir.by
 sdfsd IN CNAME jio.bbb.com
+hohoho IN A 123.123.123.22

@@ -1,10 +1,9 @@
 ﻿  lru.c
 C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(39,40): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(123,27): warning C4474: "printf" : для строки формата передано слишком много аргументов
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(123,27): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(124,31): warning C4474: "printf" : для строки формата передано слишком много аргументов
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(124,31): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(201,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(112): warning C4715: cache_search: значение возвращается не при всех путях выполнения
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(125,27): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(125,27): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(126,31): warning C4474: "printf" : для строки формата передано слишком много аргументов
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(126,31): message : заполнители и их параметры ожидают переменное число аргументов в количестве 0, но было предоставлено 1
+C:\Users\Глеб\source\repos\artemslinko\OAIP\LABA5.SEM2\LABA5.SEM2\lru.c(204,13): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
   LINK : не найден или не выполнена сборка C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe при последней инкрементной компоновке; выполняется полная компоновка
   LABA5.SEM2.vcxproj -> C:\Users\Глеб\Source\Repos\artemslinko\OAIP\LABA5.SEM2\x64\Debug\LABA5.SEM2.exe

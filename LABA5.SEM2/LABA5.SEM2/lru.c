@@ -109,6 +109,8 @@ char* cache_search(lru_cache* cache, const char* key, int flag) {
 			return ip_adress;
 		}
 	}
+	
+	return NULL;
 }
 
 void add_database(const char* domen) {
@@ -168,19 +170,20 @@ void ip_search_by_domain(lru_cache* cache) {
 
 	if (cache_search_result != NULL)
 		printf("Searched IP-adress: %s\n", cache_search_result);
+
+	free(cache_search_result);
 }
 
 void domain_search_by_ip() {
 	char* buffer = (char*)malloc(MAX_SIZE_OF_STRING);
 	char* domain = (char*)calloc(MAX_SIZE_OF_STRING, 1);
 	char* ip_adress = (char*)calloc(MAX_SIZE_OF_STRING, 1);
-	char* searche = (char*)calloc(MAX_SIZE_OF_STRING, 1);
 
 	int flag = 0;
 
 	printf("\nEnter IP-adress: ");
 
-	searche = input_str();
+	char* searche = input_str();
 	if (valid_ip_check(searche) != RIGHT_IP_ADRESS) {
 		printf("\nWrong IP-adress\n");
 
