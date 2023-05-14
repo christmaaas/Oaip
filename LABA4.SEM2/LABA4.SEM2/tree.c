@@ -189,7 +189,11 @@ node* load_database(FILE* database_file) {
     else {
         delete_first_symbol(&root_node);
         
-        return get_new_node(root_node);
+        root = get_new_node(root_node);
+
+        free(root_node);
+
+        return root;
     }
     
     free(root_node);
