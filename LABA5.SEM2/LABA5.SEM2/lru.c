@@ -98,6 +98,10 @@ char* cache_search(lru_cache* cache, const char* key, int flag) {
 
 			if ((cache_search_result = cache_search(cache, ip_adress, flag)) != NULL) {
 				cache_insert(cache, key, cache_search_result);
+				
+				free(domain);
+				free(ip_adress);
+				
 				return cache_search_result;
 			}
 		}

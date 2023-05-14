@@ -112,7 +112,7 @@ int count_word(const char* str, const char* ptr, int* index) {
 
 int find_word(const char* string, int* index) {
 	while (string[(*index)] != '\0') {
-		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index)] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
+		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index)] != '-' && if_letter(string[(*index)]) == 0 && if_letter(string[(*index)]) != 0) {
 			return (*index);
 		}
 		(*index)++;
@@ -224,7 +224,9 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 				counter = count_word(buf, word, &index);
 			}
 			
-			check_words(head, array, size_of_words, word, counter);
+			if (word != NULL) {
+				check_words(head, array, size_of_words, word, counter);
+			}
 			
 			index++;
 		}
