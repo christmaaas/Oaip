@@ -67,7 +67,7 @@ char* find_word_in_dictionary(const char* str, const char* ptr_word) {
 	for (i = 0; str[i] != '\0'; i++) {
 		for (j = i, k = 0; ptr_word[k] != '\0' && str[j] == ptr_word[k]; j++, k++)
 			;
-		if (ptr_word[k] == '\0' && ((i == 0 && str[j] == '/') || (str[i - 1] == '/' && str[j] == '\n'))) {
+		if (ptr_word[k] == '\0' && ((i == 0 && str[j] == '/') || (str[i] == '/' && str[j] == '\n'))) { // str[i - 1]
 			if (str[i] == str[0] && str[j] == '/') {
 				word = take_word_after_slash(str, (j + 1));
 				break;
@@ -92,7 +92,7 @@ int count_word(const char* str, const char* ptr, int* index) {
 	for (i = 0; i < (*index); i++) {
 		for (j = i, k = 0; ptr[k] != '\0' && str[j] == ptr[k]; j++, k++)
 			;
-		if (ptr[k] == '\0' && (str[i - 1] == ' ' || str[i - 1] == '\"' || str[i - 1] == '\'' || str[i] == str[0]) && str[j + 1] == ' ') {
+		if (ptr[k] == '\0' && (str[i] == ' ' || str[i - 1] == '\"' || str[i - 1] == '\'' || str[i] == str[0]) && str[j + 1] == ' ') { // str[i - 1]
 			return -1;
 		}
 	}
@@ -112,7 +112,7 @@ int count_word(const char* str, const char* ptr, int* index) {
 
 int find_word(const char* string, int* index) {
 	while (string[(*index)] != '\0') {
-		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index) - 1] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
+		if ((*index) == 0 && if_letter(string[(*index)]) != 0 || string[(*index)] != '-' && if_letter(string[(*index) - 1]) == 0 && if_letter(string[(*index)]) != 0) {
 			return (*index);
 		}
 		(*index)++;
@@ -220,7 +220,9 @@ void words_for_dictionary(stack** head, words** array, dictionary** arr, int* si
 			
 			word = take_word(buf, start);
 			
-			counter = count_word(buf, word, &index);
+			if (word != NULL) {
+				counter = count_word(buf, word, &index);
+			}
 			
 			check_words(head, array, size_of_words, word, counter);
 			
