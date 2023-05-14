@@ -103,6 +103,8 @@ void hashtable_insert(hashtable* table, const char* key, node* node) {
 
 			current_object->node->value = node->value;
 
+			free_object(object);// non free
+
 			return;
 		}
 		else {
