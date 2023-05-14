@@ -74,6 +74,8 @@ void collision_prevention(hashtable* table, int index, hashtable_object* object)
 
 				current->object->node->value = object->node->value;
 
+				free_object(object);
+
 				return;
 			}
 			current = current->next;
