@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lru.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="cache.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
