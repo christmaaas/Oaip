@@ -185,7 +185,7 @@ void free_list(list* head) {
 	}
 }
 
-list* create_chains(hashtable* table) {
+list* create_chains(const hashtable* table) {
 	list** chains = (list**)malloc(table->size * sizeof(list*));
 
 	for (int i = 0; i < table->size; i++) {
