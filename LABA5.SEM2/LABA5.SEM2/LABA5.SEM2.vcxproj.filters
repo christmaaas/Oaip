@@ -27,6 +27,9 @@
     <ClCompile Include="resources.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="lru.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hashtable.h">

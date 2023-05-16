@@ -131,6 +131,7 @@
     <ClCompile Include="hashtable.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="resources.c" />
+    <ClCompile Include="lru.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cache.h" />
