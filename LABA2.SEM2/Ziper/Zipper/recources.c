@@ -35,7 +35,7 @@ void output(words** array, int* size) {
 	}
 }
 
-void dictionary_output(dictionary** array, int* size) {
+void dictionary_output(dictionary** array, const int* size) {
 	for (int i = 0; i < (*size); i++) {
 		printf("----------------------\n");
 		printf("Word1: %s\n", (*array)[i].word_for_change);

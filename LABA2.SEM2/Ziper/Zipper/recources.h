@@ -20,4 +20,4 @@ int if_letter(char symbol);
 
 void output(words** array, int* size);
 
-void dictionary_output(dictionary** array, int* size);
+void dictionary_output(dictionary** array, const int* size);
