@@ -24,9 +24,6 @@
     <ClCompile Include="recources.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="words.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="compress.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
