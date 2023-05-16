@@ -117,7 +117,7 @@ void hashtable_insert(hashtable* table, const char* key, node* node) {
 	}
 }
 
-char* hashtable_search(hashtable* table, const char* key) {
+char* hashtable_search(const hashtable* table, const char* key) {
 	int index = hash_function(key);
 
 	hashtable_object* current_object = table->objects[index];
