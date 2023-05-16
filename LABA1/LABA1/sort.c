@@ -58,7 +58,7 @@ void sort_two_fields(Laptop** array, const int* size) {
 	}
 }
 
-void sort(Laptop** array, int* size) {
+void sort(Laptop** array, const int* size) {
 	int choice = 0;
 	
 	output_sort_menu();
