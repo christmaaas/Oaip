@@ -110,6 +110,9 @@ char* cache_search(lru_cache* cache, const char* key, int flag) {
 		}
 		else {
 			cache_insert(cache, domain, ip_adress);
+			
+			free(domain);
+			
 			return ip_adress;
 		}
 	}
