@@ -11,7 +11,7 @@ void push_node(stack** head, char* word, int size) {
    
     (*tmp).next = (*head);
     (*tmp).word = word;
-    (*tmp).size = size;
+    (*tmp).size = size; //p
     (*head) = tmp;
 }
 
