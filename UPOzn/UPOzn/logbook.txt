@@ -1,3 +1,1 @@
-[12.05.2023 21:46:22] [APP] Programm runs.
-[12.05.2023 21:46:34] [APP] File text was decrypted.
-[12.05.2023 21:46:36] [APP] Programm ends.
+[19.05.2023 19:38:23] [APP] Programm runs.

@@ -4,7 +4,7 @@
 #include "menu.h"
 
 int main() {
-	printf("----- MORSE-CODER -----\n");
+	printf("----- Artem Slinko production presents: MORSE-CODER -----\n");
 	menu();
 	return 0;
 }
