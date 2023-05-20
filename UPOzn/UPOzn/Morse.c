@@ -1,6 +1,5 @@
 #include "morse.h"
 #include "resources.h"
-#include "log.h"
 
 void string_letters_to_lower(char** string) {
 	int letter_position = FIRST_ELEMENT;
@@ -53,8 +52,6 @@ void morse_encrypt_string() {
 	printf("\nEncrypted text:\n");
 	printf("%s", encrypted_text);
 
-	push_log(log_type[APPLICATION], "User text was encrypted.", "a");
-
 	printf("\n");
 
 	free(text_to_encrypt);
@@ -67,12 +64,11 @@ char* string_decryptation(const char* string) {
 	char* encrypted_letter = (char*)malloc(SIZE_OF_LETTER_AND_NULL_CHARACTER);
 
 	int i = 0;
-	int j = 0;
 
 	decrypted_text[FIRST_ELEMENT] = NULL_CHARACTER;
 
 	while (string[i] != NULL_CHARACTER) {
-		j = FIRST_ELEMENT;
+		int j = FIRST_ELEMENT;
 
 		while ((string[i] != SPACE) && (string[i] != NULL_CHARACTER)) {
 			encrypted_text[j] = string[i];
@@ -116,8 +112,6 @@ void morse_decrypt_string() {
 
 	printf("\nDecrypted text: \n");
 	printf("%s", decrypted_text);
-
-	push_log(log_type[APPLICATION], "User text was decrypted.", "a");
 
 	printf("\n");
 
@@ -185,8 +179,6 @@ void morse_encrypt_file() {
 
 	print_file(new_file_name);
 
-	push_log(log_type[APPLICATION], "File text was encrypted.", "a");
-
 	free(new_file_name);
 }
 
@@ -210,10 +202,8 @@ void file_decryption(const char* source_file_name, const char* destination_file_
 	FILE* encrypted_file = file_open(source_file_name, "r");
 	FILE* decrypted_file = file_open(destination_file_name, "w");
 
-	int i = 0;
-
 	while (true) {
-		i = FIRST_ELEMENT;
+		int i = FIRST_ELEMENT;
 
 		encrypted_text[i] = fgetc(encrypted_file);
 		while (!feof(encrypted_file) && encrypted_text[i] != SPACE && encrypted_text[i] != NEWLINE) {
@@ -260,8 +250,6 @@ void morse_decrypt_file() {
 	printf("\nDecrypted text:\n");
 
 	print_file(new_file_name);
-
-	push_log(log_type[APPLICATION], "File text was decrypted.", "a");
 
 	free(new_file_name);
 }

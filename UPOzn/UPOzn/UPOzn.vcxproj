@@ -127,14 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="log.c" />
     <ClCompile Include="menu.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="morse.c" />
     <ClCompile Include="resources.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="log.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="morse.h" />
     <ClInclude Include="resources.h" />

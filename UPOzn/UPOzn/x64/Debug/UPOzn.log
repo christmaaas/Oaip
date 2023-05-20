@@ -1,6 +1,2 @@
-﻿  log.c
-  main.c
-  menu.c
-  Создание кода...
-  LINK : не найден или не выполнена сборка C:\Users\Глеб\source\repos\artemslinko\OAIP\UPOzn\x64\Debug\UPOzn.exe при последней инкрементной компоновке; выполняется полная компоновка
+﻿  morse.c
   UPOzn.vcxproj -> C:\Users\Глеб\source\repos\artemslinko\OAIP\UPOzn\x64\Debug\UPOzn.exe
