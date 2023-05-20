@@ -131,6 +131,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="recources.c" />
     <ClCompile Include="stack.c" />
+    <ClCompile Include="words.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compress.h" />
